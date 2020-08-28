@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang=de>
+<head><meta name="generator" content="Hexo 3.8.0">
+<script data-ad-client="ca-pub-8970649379030660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>SPOJ DIV1CNT | Imperceptible</title>
+  <meta name="description" content="SPOJ DIV1CNT DescriptionLet$ s_1(n)$be the sum of positive proper divisors of $n$.For example, $s_1(1) = 0, $$ s_1(2) = 1$ and $s_1(6) = 6$Let$S(n) = \sum _{i=1}^n s_1(i).$Given $N$,  find $S(N)$. Inp">
+<meta name="keywords" content="数学,凸包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SPOJ DIV1CNT">
+<meta property="og:url" content="https://buzhibujue.cf/2019/06/14/SPOJDIV1CNT/index.html">
+<meta property="og:site_name" content="Imperceptible">
+<meta property="og:description" content="SPOJ DIV1CNT DescriptionLet$ s_1(n)$be the sum of positive proper divisors of $n$.For example, $s_1(1) = 0, $$ s_1(2) = 1$ and $s_1(6) = 6$Let$S(n) = \sum _{i=1}^n s_1(i).$Given $N$,  find $S(N)$. Inp">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/06/13/5d026e3df3b0d69097.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/06/14/5d02e29fdf60121654.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/14/5d02e884eb9d381423.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/14/5d02e9901b41333737.png">
+<meta property="og:image" content="https://i.loli.net/2019/06/14/5d02ea32c61a974425.png">
+<meta property="og:updated_time" content="2020-05-03T15:34:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SPOJ DIV1CNT">
+<meta name="twitter:description" content="SPOJ DIV1CNT DescriptionLet$ s_1(n)$be the sum of positive proper divisors of $n$.For example, $s_1(1) = 0, $$ s_1(2) = 1$ and $s_1(6) = 6$Let$S(n) = \sum _{i=1}^n s_1(i).$Given $N$,  find $S(N)$. Inp">
+<meta name="twitter:image" content="https://i.loli.net/2019/06/13/5d026e3df3b0d69097.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://buzhibujue.cf/2019/06/14/SPOJDIV1CNT/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Imperceptible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liubei121212" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">不知不觉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Oier &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chengdu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>Never Settle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU/">HDU</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LOJ/">LOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SPOJ/">SPOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/总结/">总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/洛谷/">洛谷</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DP/" style="font-size: 13px;">DP</a> <a href="/tags/FFT/" style="font-size: 13.17px;">FFT</a> <a href="/tags/LCT/" style="font-size: 13px;">LCT</a> <a href="/tags/NTT/" style="font-size: 13.17px;">NTT</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/凸包/" style="font-size: 13px;">凸包</a> <a href="/tags/动态DP/" style="font-size: 13px;">动态DP</a> <a href="/tags/图论/" style="font-size: 13.17px;">图论</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/思维/" style="font-size: 13.5px;">思维</a> <a href="/tags/扩域/" style="font-size: 13px;">扩域</a> <a href="/tags/数学/" style="font-size: 13.67px;">数学</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/水题/" style="font-size: 13px;">水题</a> <a href="/tags/线性基/" style="font-size: 13px;">线性基</a> <a href="/tags/组合数学/" style="font-size: 13px;">组合数学</a> <a href="/tags/莫比乌斯反演/" style="font-size: 13px;">莫比乌斯反演</a> <a href="/tags/计数/" style="font-size: 14px;">计数</a> <a href="/tags/错排/" style="font-size: 13px;">错排</a> <a href="/tags/随笔/" style="font-size: 13.83px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/28/AFO/" class="title">AFO</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-28T14:21:36.000Z" itemprop="datePublished">2020-06-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/LOJ/">LOJ</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/26/loj2474/" class="title">LOJ2474</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-26T04:00:00.000Z" itemprop="datePublished">2020-04-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/22/图计数/" class="title">图计数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/18/fft/" class="title">FFT&amp;NTT</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/codeforces/">codeforces</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/05/cf886E/" class="title">cf886E</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-05T02:43:37.000Z" itemprop="datePublished">2020-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-SPOJDIV1CNT" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SPOJ DIV1CNT
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/06/14/SPOJDIV1CNT/" class="article-date">
+	  <time datetime="2019-06-14T01:29:50.000Z" itemprop="datePublished">2019-06-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/SPOJ/">SPOJ</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/凸包/">凸包</a>, <a class="article-tag-link" href="/tags/数学/">数学</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/06/14/SPOJDIV1CNT/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="SPOJ-DIV1CNT"><a href="#SPOJ-DIV1CNT" class="headerlink" title="SPOJ DIV1CNT"></a><a href="https://www.spoj.com/problems/AFS3/" target="_blank" rel="noopener">SPOJ DIV1CNT</a></h1><blockquote>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Let$ s_1(n)$be the sum of positive <strong>proper</strong> divisors of $n$.<br>For example, $s_1(1) = 0, $$ s_1(2) = 1$ and $s_1(6) = 6$<br>Let$S(n) = \sum _{i=1}^n s_1(i).$<br>Given $N$,  find $S(N)$.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>First line contains $T$ $(1 \le T \le 10^5$), the number of test cases.<br>Each of the next $T$ lines contains a single integer $N$. $(1 \le N &lt;2^{63}$)</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each number $N$, output a single line containing $S(N)$.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">10</span><br><span class="line">100</span><br><span class="line">1000000000000000000</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">32</span><br><span class="line">3249</span><br><span class="line">322467033424113218863487627735401433</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.luogu.org/problemnew/show/SP26073" target="_blank" rel="noopener">洛谷题面</a></p>
+</blockquote>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>题意即求$\sigma_0 i$的前缀和</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\sigma_{0}(n)&=\sum_{i=1}^{n}\left\lfloor\frac{n}{i}\right\rfloor\\
+&=\sum_{i=1}^{n}\sum_{j=1}^n\left[i\times j<=n\right]\\
+&=\sum_{i=1}^{\sqrt{n}}\sum_{j=1}^{n/i}1+\sum_{j=1}^{\sqrt{n}}\sum_{i=1}^{n/j}1-\sum_{i=1}^{\sqrt{n}}\sum_{j=1}^{\sqrt{n}}1\\
+&=2\sum_{i=1}^{\sqrt{n}}\left\lfloor\frac{n}{i}\right\rfloor-{\left\lfloor\sqrt{n}\right\rfloor}^2
+\end{align}</script><p>现在问题就是求$\sum_{i=1}^{\sqrt{n}}\left\lfloor\frac{n}{i}\right\rfloor$</p>
+<p>相当于是求双函数$y=\cfrac{n}{x}$在$y=\left\lfloor\sqrt{n}\right\rfloor$到$1$时下方的整点数</p>
+<p>借用一下<a href="https://yhx-12243.github.io/OI-transit/records/spojDIVCNT1.html" target="_blank" rel="noopener">这位老哥</a>的图<del>以及题解</del></p>
+<p><img src="https://i.loli.net/2019/06/13/5d026e3df3b0d69097.jpg" alt="SPOJ26073"></p>
+<p>可以看出是要求紫色部分（以下称为”R区域”）的整点个数</p>
+<p>然后可以使用一个叫做$Stern-Brocot $树的东西(我也不会，想学自己去查吧=.=)</p>
+<p>只需要知道它可以不重不漏的构造出所有的真既约分数</p>
+<p>然后我们从点$(\sqrt{n},\left\lfloor\frac{n}{\sqrt{n}}\right\rfloor+1)$出发（在R区域上方），初始添加分数$(1,0)$和$(1,1)$，每次按照着那个$Stern-Brocot$树构造出的分数作为向量往下走直到走到R区域（就不走这一步了），然后在$SB$树(???)上二分出（不知道叫不叫二分，可能也不叫）下一步走的向量$V$，答案加等于$x\times V.y+\dfrac{(V.y+1)\times (V.x-1)}{2}$然后一直这样走，直到最后走到$y&lt;=n^\frac{1}{3}$时每次基本都是$x$向右走很多$ y$才下1格（反比例函数的性质<del>不对是常识</del>）（此时斜率绝对值为$\cfrac{1}{k}$）可以直接暴力，然后就完了。</p>
+<p>？？？？</p>
+<p><del>不是故意题解写成这样的，是膜X的后遗症</del></p>
+<p>Q1：为啥初始点坐标$(\sqrt{n},\left\lfloor\frac{n}{\sqrt{n}}\right\rfloor+1)$?</p>
+<p>A1：我们要求R区域内的整点个数（包括边界），可能可以从边界上开始算，但感觉要判是不是平方数什么的，细节很多，直接从R区域上方开始，每次找到一个尽可能贴近双曲线的向量（但不相交）顺着走，这样只需考虑当前点左边的点（不包括自身）可能会好写一些，$y$坐标$+1$是之后往下走的时候默认当前坐标所在行已经算过答案了，如果不$+1$的话就会少 $y=\left\lfloor\frac{n}{\sqrt{n}}\right\rfloor$时的答案</p>
+<p>Q2：每次往下走之后答案多了哪些点呢？</p>
+<p>A2：好问题！因为我也想了半天那个$\dfrac{(V.y+1)*(V.x-1)}{2}$是哪里冒出来的，然而网上题解大概就两篇，不知道是不是一个人写的都没解释，拿出画图：</p>
+<p><img src="https://i.loli.net/2019/06/14/5d02e29fdf60121654.png" alt="SP26073.png"></p>
+<p>红色部分是双曲线，因为我们找到的是最贴合双曲线的向量（图中绿色），所以绿色一定不会经过其他的点（否则向量就是上面的点到这个“其他的点”了），新增的点的个数就是蓝色部分+橙色部分在R区域内的点数（我们的当前点以及走到的点都在R区域外，都不计入答案），由图像可知蓝色部分点数是$x_0\times V.y$, 橙色部分点数是$180°$对称的，（不对称则向量会到不对称的那个点）所以橙色部分在R区域内的点数=$\dfrac{(V.x-1)\times(V.y+1)}{2}$</p>
+<p>Q3：怎么找到最贴近双曲线的向量？</p>
+<p>A3 ：因为我们要向量，$SB$树给我们提供的是向量的斜率的绝对值，所以为了避免难写，维护的是向量的绝对值的一个栈。相当于把最上面那个图上下翻转一下，然后维护一个从栈顶到栈底斜率越来越低的栈，如果按之前的方法走$stack[top]$的向量再走一遍就到R区域了，那么就一直弹栈直到当前的$(x_0,y_0)+stack[top]$在R区域而$(x_0,y_0)+stack[top-1]不在$</p>
+<p><img src="https://i.loli.net/2019/06/14/5d02e884eb9d381423.png" alt="Q3_1.png"></p>
+<p>就像这样</p>
+<p>把$stack[top]$记为$l$,$stack[top-1]$记为$r$按照$SB$树的方法生成他们的合向量$m$，然后分两种大的情况讨论</p>
+<h4 id="Case1"><a href="#Case1" class="headerlink" title="Case1:"></a>Case1:</h4><p><img src="https://i.loli.net/2019/06/14/5d02e9901b41333737.png" alt="Q3_2.png"></p>
+<p>当前点走$m$不会走进R区域</p>
+<p>所以$m$一定比$r$更贴近双曲线，可以令$r=m$再继续二分</p>
+<h4 id="Case2"><a href="#Case2" class="headerlink" title="Case2:"></a>Case2:</h4><p><img src="https://i.loli.net/2019/06/14/5d02ea32c61a974425.png" alt="Q3_3.png"></p>
+<p>如果走$m$会到R区域内</p>
+<p>那么分$r$的斜率和双曲线在$x=x_0+m.x$的斜率的大小关系讨论</p>
+<ol>
+<li>$k_r&gt;=k_{f(x=x_0+m.x)}$ 试想一下之后如果之后继续二分，得到的$m$的$x$比现在的$x$还要大，那么双曲线斜率就还要小，不管$m$变得多么接近$r$斜率仍永远比双曲线的大，所以仍一定在R区域内（或者可以考虑二分的过程，相当于是$m$每次$+=r$，而双曲线在$x=x_0+m.x$处已经斜率小于等于$r$了，所以无论之后加多少个$r$仍然在R区域）直接<code>break</code>掉</li>
+<li>$k_r&lt;k_{f(x=x_0+m.x)}$ 那么之后加若干$r$还是可能走出$r$区域的，就令$l=m$再继续二分</li>
+</ol>
+<p>代码里写的是用的斜率，当然也可以求导得到等价的不用<code>double</code>的表达式</p>
+<script type="math/tex; mode=display">
+\frac{r.y}{r.x}<=\left|-\frac{n}{(x+m.x)^2}\right|\\
+\Updownarrow
+\\
+r.y\times(x+m.x)^2<=n\times r.x</script><p>Q4：所以那个$SB$树有啥用啊？</p>
+<p>A4：emmm…可能是能够保证这样一定能够造出所有斜率，不会漏解，<del>然而直觉上感觉是对的就行了</del></p>
+<p>Q5：咋暴力啊？</p>
+<p>A5：<del>该怎么暴力就怎么暴力</del></p>
+<p>Q6：时间复杂度？</p>
+<p>A6：$\mathcal{O}(n^\frac{1}{3}log{n})$不会证，参见IOI2018候选队论文《一些特殊的数论函数求和问题 朱震霆》</p>
+<p>Q7：为啥你和哪位老哥代码那么像？</p>
+<p>A7：<del>因为是抄的啊</del></p>
+<p>注意答案可能爆<code>long long</code>, 要<code>_int128</code></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lll __int128 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FIO <span class="meta-string">"SP26073"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e7</span>+<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">point</span>&#123;</span></span><br><span class="line">	ll x,y;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="title">point</span><span class="params">(ll _x=<span class="number">0</span>,ll _y=<span class="number">0</span>)</span></span>&#123;x=_x;y=_y;&#125;</span><br><span class="line">	<span class="keyword">inline</span> point <span class="keyword">operator</span> +(<span class="keyword">const</span> point &amp;t)<span class="keyword">const</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> point(x+t.x,y+t.y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;st[N],L,R,M;</span><br><span class="line"></span><br><span class="line">ll n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">inR</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> x*y&lt;=n;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">double</span> <span class="title">slope</span><span class="params">(ll x)</span></span>&#123;<span class="keyword">return</span> (<span class="keyword">double</span>)n/x/x;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> lll <span class="title">s0</span><span class="params">()</span></span>&#123;</span><br><span class="line">	lll ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> t=<span class="number">0</span>,rt=cbrt(n);</span><br><span class="line">	st[++t]=point(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	st[++t]=point(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">	ll m=<span class="built_in">sqrt</span>(n),x=n/m,y=m+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="comment">//printf("t=%d\n",t);</span></span><br><span class="line">		<span class="keyword">for</span>(L=st[t--];!inR(x+L.x,y-L.y);x+=L.x,y-=L.y)</span><br><span class="line">			ret+=x*L.y+(L.y+<span class="number">1</span>)*(L.x<span class="number">-1</span>)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(y&lt;=rt)<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">for</span>(R=st[t];inR(x+R.x,y-R.y);R=st[--t])L=R;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			M=L+R;</span><br><span class="line">			<span class="keyword">if</span>(!inR(x+M.x,y-M.y))st[++t]=(R=M);</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(slope(x+M.x)&lt;=(<span class="keyword">double</span>)R.y/R.x)<span class="keyword">break</span>;</span><br><span class="line">				L=M;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;y;i++)ret+=n/i;</span><br><span class="line">	<span class="keyword">return</span> ret*<span class="number">2</span><span class="number">-1l</span>l*m*m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> T;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(lll x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;=<span class="number">10</span>)write(x/<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">writeln</span><span class="params">(<span class="keyword">const</span> lll &amp;x)</span></span>&#123;</span><br><span class="line">	write(x);</span><br><span class="line">	<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(FIO<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(FIO<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n),writeln(s0());</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://buzhibujue.cf/2019/06/14/SPOJDIV1CNT/" title="SPOJ DIV1CNT" target="_blank" rel="external">https://buzhibujue.cf/2019/06/14/SPOJDIV1CNT/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liubei121212" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liubei121212" target="_blank"><span class="text-dark">不知不觉</span><small class="ml-1x">Oier &amp; Student</small></a></h3>
+        <div>Never Settle</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/08/10/字符串选讲/" title="字符串选讲"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/06/13/2019江苏省队集训Day6T2/" title="2019江苏省队集训Day6T2"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'dUYIOlsqHv5VgCljRF9mTTtv-gzGzoHsz',
+    appKey: 'HRaJc2h4HiPKBHSGP9lyU5tx',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+</body>
+</html>

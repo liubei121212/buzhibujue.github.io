@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang=de>
+<head><meta name="generator" content="Hexo 3.8.0">
+<script data-ad-client="ca-pub-8970649379030660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>HDU4997 | Imperceptible</title>
+  <meta name="description" content="HDU4997 DescriptionPeople are weak. Relationship between people like friendship or love is weak too. But a group of persons can have strong relationship, umm, 2-edge-connected relationship. Suppose th">
+<meta name="keywords" content="计数,容斥">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDU4997">
+<meta property="og:url" content="https://buzhibujue.cf/2019/08/15/HDU4997/index.html">
+<meta property="og:site_name" content="Imperceptible">
+<meta property="og:description" content="HDU4997 DescriptionPeople are weak. Relationship between people like friendship or love is weak too. But a group of persons can have strong relationship, umm, 2-edge-connected relationship. Suppose th">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-03T15:34:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HDU4997">
+<meta name="twitter:description" content="HDU4997 DescriptionPeople are weak. Relationship between people like friendship or love is weak too. But a group of persons can have strong relationship, umm, 2-edge-connected relationship. Suppose th">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://buzhibujue.cf/2019/08/15/HDU4997/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Imperceptible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liubei121212" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">不知不觉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Oier &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chengdu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>Never Settle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU/">HDU</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LOJ/">LOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SPOJ/">SPOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/总结/">总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/洛谷/">洛谷</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DP/" style="font-size: 13px;">DP</a> <a href="/tags/FFT/" style="font-size: 13.17px;">FFT</a> <a href="/tags/LCT/" style="font-size: 13px;">LCT</a> <a href="/tags/NTT/" style="font-size: 13.17px;">NTT</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/凸包/" style="font-size: 13px;">凸包</a> <a href="/tags/动态DP/" style="font-size: 13px;">动态DP</a> <a href="/tags/图论/" style="font-size: 13.17px;">图论</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/思维/" style="font-size: 13.5px;">思维</a> <a href="/tags/扩域/" style="font-size: 13px;">扩域</a> <a href="/tags/数学/" style="font-size: 13.67px;">数学</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/水题/" style="font-size: 13px;">水题</a> <a href="/tags/线性基/" style="font-size: 13px;">线性基</a> <a href="/tags/组合数学/" style="font-size: 13px;">组合数学</a> <a href="/tags/莫比乌斯反演/" style="font-size: 13px;">莫比乌斯反演</a> <a href="/tags/计数/" style="font-size: 14px;">计数</a> <a href="/tags/错排/" style="font-size: 13px;">错排</a> <a href="/tags/随笔/" style="font-size: 13.83px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/28/AFO/" class="title">AFO</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-28T14:21:36.000Z" itemprop="datePublished">2020-06-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/LOJ/">LOJ</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/26/loj2474/" class="title">LOJ2474</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-26T04:00:00.000Z" itemprop="datePublished">2020-04-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/22/图计数/" class="title">图计数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/18/fft/" class="title">FFT&amp;NTT</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/codeforces/">codeforces</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/05/cf886E/" class="title">cf886E</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-05T02:43:37.000Z" itemprop="datePublished">2020-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-HDU4997" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HDU4997
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/08/15/HDU4997/" class="article-date">
+	  <time datetime="2019-08-15T12:07:34.000Z" itemprop="datePublished">2019-08-15</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/HDU/">HDU</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/容斥/">容斥</a>, <a class="article-tag-link" href="/tags/计数/">计数</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/08/15/HDU4997/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="HDU4997"><a href="#HDU4997" class="headerlink" title="HDU4997"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4997" target="_blank" rel="noopener">HDU4997</a></h1><blockquote>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>People are weak. Relationship between people like friendship or love is weak too. But a group of persons can have strong relationship, umm, 2-edge-connected relationship.</p>
+<p>Suppose there are n persons. If two persons, A and B, are in a relationship, then we add an un-directional edge between them. In this way we can have a relationship graph, which is an un-directional graph without self-loops or multiple edges. If this graph is 2-edge-connected, then we say these persons have a strong relationship.</p>
+<p>Now we have a group of persons without relationship between any two of them. And some pair of persons even hate each other. You will introduce some pairs of persons to know each other and set up a relationship between them to make the group of persons have a strong relationship. But notice that you can’t set up a relationship between a pair of persons who hate each other. How many ways you can do that? (Two ways are different if there exist a pair of persons which have relationship in one way but not in another way).</p>
+<p><strong>output the answer modulo 1e9+7</strong></p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line contains an integer $T$ , denoting the number of the test cases.</p>
+<p>For each test case, the first line contains 2 integers n and m, denoting the number of persons in the group and the number of pairs of persons who hate each other. Then m lines follow, each line containing 2 integers $A$ and $B$, denoting that $A$ and B hate each other.</p>
+<p>$T\leq5, 2\leq n\leq 10, 0\leq m\leq n*(n-1)/2.$ The persons are indexed from $1$ .</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case, output the answer in a line.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5 0</span><br><span class="line">10 0</span><br><span class="line">5 2</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">253</span><br><span class="line">466997276</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>A 2-edge-connected graph is a graph which is connected and if you remove an edge from it, it is still connected.</p>
+<p>Note that $n\geq 2$,  so we can ignore the issue that whether a single vertex is 2-edge-connected or not :). </p>
+</blockquote>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p><strong>1.计算集合 $S$ 形成的连通图的方案数 </strong></p>
+<p>直接做是 $3^n$ 这里说一下 $n^22^n$ 做法：定义集合幂级数的乘法为子集卷积，$f$ 为形成连通图的方案的集合幂级数，$g$ 为形成任意子图的方案的集合幂级数( $\varnothing$ 项的系数是 $0$ )</p>
+<script type="math/tex; mode=display">
+g+1=\exp(f)\\
+f=\ln(g+1)\\
+\begin{align}
+f'&=\frac{g'}{g+1}\\
+f'+f'g&=g'\\
+f'_n+\sum_{i=0}^nf'_ig_{n-i}&=g'_n\\
+(n+1)f_{n+1}+\sum_{i=0}^n(i+1)f_{i+1}g_{n-i}&=(n+1)g_{n+1}\\
+f_{n+1}&=
+g_{n+1}-\frac{1}{n+1}\sum_{i=0}^n(i+1)f_{i+1}g_{n-i}
+\end{align}</script><p><strong>2. 计算集合 $S$ 形成的双连通图的方案数</strong></p>
+<p>为计算双连通子图的方案 $ans$，再记录一个<code>h[S][T]</code>表示将 $S$ 划分为若干不相互连通的连通子集 $S_0,S_1\dots$ 使得所有子集 $S_0,S_1\dots$ 都有且仅有一条连向 $T$ 的边 （两条就双连通了）</p>
+<script type="math/tex; mode=display">
+ans[S]=f[S]-\sum_{\min S\in S_0\subseteq S}ans[S_0]\times h[S\backslash S_0][S_0]\\
+h[S][T]=
+\begin{cases}
+1,&S=\varnothing
+\\
+\sum_{\min S\in S_0\subsetneq S}h[S_0][T]\times f[S_0]\times edge(S_0,T),&\text{otherwise}
+\end{cases}</script><p>一开始特别菜的不知道怎么预处理这个 $edge(S,T)$ 以为只能 $4^n$ 一看其他人写的直接 $E(S\oplus T)-E(S)-E(T)$即可，<del>我容斥不过关</del></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FIO <span class="meta-string">"hdu4997"</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10</span>,SN=<span class="number">1</span>&lt;&lt;N,MOD=<span class="number">1e9</span>+<span class="number">7</span>,N2=N*N;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> (a+=b)&gt;=MOD?a-MOD:a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> (a-=b)&lt;   <span class="number">0</span>?a+MOD:a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> <span class="number">1l</span>l*a*b%MOD;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>&amp; <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> a=add(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>&amp; <span class="title">dec</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> a=sub(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>&amp; <span class="title">pro</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> a=mul(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">int</span> c=<span class="number">1</span>;<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,pro(a,a))<span class="keyword">if</span>(b&amp;<span class="number">1</span>)pro(c,a);<span class="keyword">return</span> c;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">inv</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;a)</span></span>&#123;<span class="keyword">return</span> qpow(a,MOD<span class="number">-2</span>);&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,T,m,d[N][N],E[SN],f[SN],g[SN][N+<span class="number">1</span>],h[SN][SN],up,ans[SN],bin[N2];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">memset</span>(d,<span class="number">0</span>,<span class="keyword">sizeof</span> d);</span><br><span class="line">  <span class="built_in">memset</span>(E,<span class="number">0</span>,<span class="keyword">sizeof</span> E);</span><br><span class="line">  <span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">  <span class="built_in">memset</span>(g,<span class="number">0</span>,<span class="keyword">sizeof</span> g);</span><br><span class="line">  <span class="built_in">memset</span>(h,<span class="number">0</span>,<span class="keyword">sizeof</span> h);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> *b)</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)inc(a[i],b[i]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> *b)</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)dec(a[i],b[i]);&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getln</span><span class="params">(<span class="keyword">int</span> *f)</span></span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> tmp[N+<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)tmp[i]=f[i];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">    <span class="keyword">int</span> cur=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)inc(cur,mul(mul(j+<span class="number">1</span>,f[j+<span class="number">1</span>]),tmp[i-j]));</span><br><span class="line">    dec(f[i+<span class="number">1</span>],mul(inv(i+<span class="number">1</span>),cur));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">edge</span><span class="params">(<span class="keyword">int</span> S,<span class="keyword">int</span> T)</span></span>&#123;<span class="keyword">return</span> sub(E[S^T],add(E[S],E[T]));&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getf</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">1</span>;S&lt;up;S++)g[S][__builtin_popcount(S)]=bin[E[S]];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">1</span>;S&lt;up;S&lt;&lt;=<span class="number">1</span>)<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;up;i++)<span class="keyword">if</span>(i&amp;S)add(g[i],g[i^S]);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">1</span>;S&lt;up;S++)getln(g[S]);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">1</span>;S&lt;up;S&lt;&lt;=<span class="number">1</span>)<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;up;i++)<span class="keyword">if</span>(i&amp;S)sub(g[i],g[i^S]);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">1</span>;S&lt;up;S++)f[S]=g[S][__builtin_popcount(S)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getans</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">0</span>;S&lt;up;S++)h[<span class="number">0</span>][S]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">1</span>;S&lt;up;S++)&#123;</span><br><span class="line">    <span class="keyword">int</span> lst=S&amp;-S;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> T=up<span class="number">-1</span>^S;T;T=(T<span class="number">-1</span>)&amp;(up<span class="number">-1</span>^S))</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> s=S^lst;~s;s=s?(s<span class="number">-1</span>)&amp;(S^lst):<span class="number">-1</span>)</span><br><span class="line">        inc(h[S][T],mul(mul(h[S^s^lst][T],f[s^lst]),edge(s^lst,T)));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">0</span>;S&lt;up;S++)&#123;</span><br><span class="line">    <span class="keyword">int</span> lst=S&amp;-S;</span><br><span class="line">    ans[S]=f[S];</span><br><span class="line">    <span class="keyword">if</span>(S^lst)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> s=(S^lst)&amp;((S^lst)<span class="number">-1</span>);~s;s=s?(s<span class="number">-1</span>)&amp;(S^lst):<span class="number">-1</span>)</span><br><span class="line">      dec(ans[S],mul(ans[s^lst],h[S^s^lst][s^lst]));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  freopen(FIO<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">  <span class="comment">//freopen(FIO".out","w",stdout);</span></span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">  bin[<span class="number">0</span>]=<span class="number">1</span>;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N2;i++)bin[i]=add(bin[i<span class="number">-1</span>],bin[i<span class="number">-1</span>]);</span><br><span class="line">  <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">    clear();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    up=<span class="number">1</span>&lt;&lt;n;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">      <span class="keyword">int</span> u,v;</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;u,&amp;v);</span><br><span class="line">      u--;v--;</span><br><span class="line">      d[u][v]++;</span><br><span class="line">      d[v][u]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">0</span>;S&lt;up;S++)</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="keyword">if</span>(S&gt;&gt;i&amp;<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)<span class="keyword">if</span>(S&gt;&gt;j&amp;<span class="number">1</span>)E[S]+=!d[i][j];</span><br><span class="line"></span><br><span class="line">    getf();getans();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[up<span class="number">-1</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://buzhibujue.cf/2019/08/15/HDU4997/" title="HDU4997" target="_blank" rel="external">https://buzhibujue.cf/2019/08/15/HDU4997/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liubei121212" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liubei121212" target="_blank"><span class="text-dark">不知不觉</span><small class="ml-1x">Oier &amp; Student</small></a></h3>
+        <div>Never Settle</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/08/16/组合数学/" title="组合数学"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/08/12/UOJ37/" title="UOJ37"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'dUYIOlsqHv5VgCljRF9mTTtv-gzGzoHsz',
+    appKey: 'HRaJc2h4HiPKBHSGP9lyU5tx',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+</body>
+</html>

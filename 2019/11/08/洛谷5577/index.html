@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang=de>
+<head><meta name="generator" content="Hexo 3.8.0">
+<script data-ad-client="ca-pub-8970649379030660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>洛谷5577 | Imperceptible</title>
+  <meta name="description" content="洛谷5577 Description$n$ 个不超过 $m$ 位的 $k$ 进制数，每次随意取出一些数 （注意可以一个数都不选）， 然后把这些数进行 $k$ 进制下不进位加法。 求最终 $0\sim k^m-1$ 的每个数字被表示出来的方案数对 $998244353$ 取模 Input第一行三个整数 $n,k,m$ 意义为题目中所述。 第二行 $n$ 个整数，之间用空格隔开，表示纸条上的数字。 （">
+<meta name="keywords" content="FFT,扩域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷5577">
+<meta property="og:url" content="https://buzhibujue.cf/2019/11/08/洛谷5577/index.html">
+<meta property="og:site_name" content="Imperceptible">
+<meta property="og:description" content="洛谷5577 Description$n$ 个不超过 $m$ 位的 $k$ 进制数，每次随意取出一些数 （注意可以一个数都不选）， 然后把这些数进行 $k$ 进制下不进位加法。 求最终 $0\sim k^m-1$ 的每个数字被表示出来的方案数对 $998244353$ 取模 Input第一行三个整数 $n,k,m$ 意义为题目中所述。 第二行 $n$ 个整数，之间用空格隔开，表示纸条上的数字。 （">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/08/ME5GSP.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/08/ME53Wt.png">
+<meta property="og:updated_time" content="2020-05-03T15:36:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="洛谷5577">
+<meta name="twitter:description" content="洛谷5577 Description$n$ 个不超过 $m$ 位的 $k$ 进制数，每次随意取出一些数 （注意可以一个数都不选）， 然后把这些数进行 $k$ 进制下不进位加法。 求最终 $0\sim k^m-1$ 的每个数字被表示出来的方案数对 $998244353$ 取模 Input第一行三个整数 $n,k,m$ 意义为题目中所述。 第二行 $n$ 个整数，之间用空格隔开，表示纸条上的数字。 （">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/08/ME5GSP.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://buzhibujue.cf/2019/11/08/洛谷5577/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Imperceptible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liubei121212" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">不知不觉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Oier &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chengdu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>Never Settle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU/">HDU</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LOJ/">LOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SPOJ/">SPOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/总结/">总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/洛谷/">洛谷</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DP/" style="font-size: 13px;">DP</a> <a href="/tags/FFT/" style="font-size: 13.17px;">FFT</a> <a href="/tags/LCT/" style="font-size: 13px;">LCT</a> <a href="/tags/NTT/" style="font-size: 13.17px;">NTT</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/凸包/" style="font-size: 13px;">凸包</a> <a href="/tags/动态DP/" style="font-size: 13px;">动态DP</a> <a href="/tags/图论/" style="font-size: 13.17px;">图论</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/思维/" style="font-size: 13.5px;">思维</a> <a href="/tags/扩域/" style="font-size: 13px;">扩域</a> <a href="/tags/数学/" style="font-size: 13.67px;">数学</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/水题/" style="font-size: 13px;">水题</a> <a href="/tags/线性基/" style="font-size: 13px;">线性基</a> <a href="/tags/组合数学/" style="font-size: 13px;">组合数学</a> <a href="/tags/莫比乌斯反演/" style="font-size: 13px;">莫比乌斯反演</a> <a href="/tags/计数/" style="font-size: 14px;">计数</a> <a href="/tags/错排/" style="font-size: 13px;">错排</a> <a href="/tags/随笔/" style="font-size: 13.83px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/28/AFO/" class="title">AFO</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-28T14:21:36.000Z" itemprop="datePublished">2020-06-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/LOJ/">LOJ</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/26/loj2474/" class="title">LOJ2474</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-26T04:00:00.000Z" itemprop="datePublished">2020-04-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/22/图计数/" class="title">图计数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/18/fft/" class="title">FFT&amp;NTT</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/codeforces/">codeforces</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/05/cf886E/" class="title">cf886E</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-05T02:43:37.000Z" itemprop="datePublished">2020-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-洛谷5577" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      洛谷5577
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/11/08/洛谷5577/" class="article-date">
+	  <time datetime="2019-11-08T08:23:54.000Z" itemprop="datePublished">2019-11-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/洛谷/">洛谷</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/FFT/">FFT</a>, <a class="article-tag-link" href="/tags/扩域/">扩域</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/08/洛谷5577/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="洛谷5577"><a href="#洛谷5577" class="headerlink" title="洛谷5577"></a><a href="https://www.luogu.org/problem/P5577" target="_blank" rel="noopener">洛谷5577</a></h1><blockquote>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>$n$ 个不超过 $m$ 位的 $k$ 进制数，每次<strong>随意取出一些数</strong> （注意可以一个数都不选）， 然后把这些数进行 $k$ 进制下<strong>不进位</strong>加法。</p>
+<p>求最终 $0\sim k^m-1$ 的每个数字被表示出来的方案数对 $998244353$ 取模</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>第一行三个整数 $n,k,m$ 意义为题目中所述。</p>
+<p>第二行 $n$ 个整数，之间用空格隔开，表示纸条上的数字。</p>
+<p>（<strong>注意</strong> , 纸条上的数均为 $k$ 进制数）</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p> 共 $k^m$ 行，你需要在第 $i$ 行输出最终得到数字 $i−1$ 的方案数模  $998244353$ 的值。 </p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3 5 1</span><br><span class="line">1 2 3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h3><p>$n\leq 10^6$<br>$k=5$ 时 $m\leq 7$<br>$k=6$ 时 $m\leq 6$</p>
+</blockquote>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>答案是形如 $\prod_{i=1}^n(1+x^{a_i})$ 的所有项的系数并且此处卷积的定义是：两个下标乘起来得到的下标是这两个下标的 $k$ 进制下不进位加法得到的值。</p>
+<p>于是就有了个 $O(nk^m)$ 的优质做法：每次加入一个数就枚举所有下标并更新它乘上 $1+x^{a_i}$ 到达的位置。可以获得 20pts 的好成绩</p>
+<p>如果这是普通的多项式乘法那么直接对于每个数 DFT 一遍算出许多点值再对应乘起来再把这些点值 IDFT 回去就是答案。</p>
+<p>然后你大概感性理解<del>意会</del>一下题目中的「 $k$ 进制下不进位加法」的卷积其实也可以类似的做：把每个下标看成一个 $m$ 维的向量 $\mathbf{V}=\{v_0,v_1,v_2,\cdots v_{m-1}\}$ 且其中每一位 $v_i&lt;k$ （就是 $k$ 进制下的每一位），那么一个下标 $\mathbf{V}=\{v_0,v_1,v_2\cdots,v_m\}$ 和 $\mathbf{U}=\{u_0,u_1,u_2,\cdots u_{m-1}\}$ 的卷积 $\mathbf{V\cdot U}=\{(v_0+u_0)\mod k,(v_1+u_1)\mod k,\cdots,(v_{m-1}+u_{m-1})\mod k\}$ 就是向量中对应的每一位在模 $x^k$ 意义下的循环卷积。</p>
+<blockquote>
+<p>循环卷积的例子：模 $x^5$ 意义下的 $x^3\cdot x^4=x^7$ 就变成了 $x^2$ </p>
+</blockquote>
+<p>我们尝试对于一个 $1+x^{a_i}$ 如何进行 $m$ 维下的 DFT</p>
+<p>回想一下一般的一维 DFT 含义：对于第 $i$ 项系数它对 DFT 的结果中位置 $j$ 的贡献的系数是 $\omega^{ij}$ </p>
+<p>二维的话位置 $(Ax,Ay)$ 对位置 $(Bx,By)$ 的贡献就是 $\omega^{AxBx}\cdot\omega^{AyBy}=\omega^{AxBx+AyBy}$ 直接先对每一行 DFT 再对每一列 DFT 就行</p>
+<p>那么似乎可以直接套到多维上去：对于一个向量 $\mathbf{U}=\{u_0,u_1,\cdots u_{m-1}\}$ ，其对结果中位置 $\mathbf{V}=\{v_0,v_1,\cdots,v_{m-1}\}$ 的贡献是 $\omega^{u_0v_0}\cdot\omega^{u_1v_1}\cdots\omega^{u_{m-1}v_{m-1}}=\omega^{u_0v_0+u_1v_1+\cdots+u_{m-1}v_{m-1}}$</p>
+<p>回到题目。</p>
+<blockquote>
+<p>因为模 $998244353$ 意义下不存在 $\omega_5$ 和 $\omega_6$ 的整数解，但我们又需要表示出 $\omega_5$ 和 $\omega_6$ ，以下内容均在扩域后的意义下进行</p>
+<p>即把每个「数」看成是 $a_0\omega_k^0+a_1\omega_k^1+\cdots+a_{k-1}\omega_k^{k-1}$ </p>
+<p>易证这个域里的「数」满足加法和乘法的封闭性</p>
+</blockquote>
+<p>结合 20pts 做法，注意到每次乘上的只有两项，其中 $1=x^0=x^{\{0,0,\cdots,0\}}$ 它对所有位置都会造成 $\omega_k^{0+0+\cdots+0}=1$ 的贡献；而 $x^{V}=x^{\{v_0,v_1,\cdots,v_{m-1}\}}$ 对于每个位置 $\mathbf{U}=\{u_0,u_1,\cdots u_{m-1}\}$ 会造成 $\omega_k^{u_0v_0}\cdot\omega_k^{u_1v_1}\cdots\omega_k^{u_{m-1}v_{m-1}}=\omega_k^{u_0v_0+u_1v_1+\cdots+u_{m-1}v_{m-1}}$ 的贡献</p>
+<p>那我们对于 $n$ 个数可以每次 DFT 得到 $k^m$ 个形如 $1+\omega_k^{t}$ 的的点值，一共求 $n$ 遍对于每一位把它对应的 $n$ 个 $1+\omega_k^t$ 乘起来最后再 IDFT 回去就是答案</p>
+<p>这样做复杂度可能是 $O(n(k^m\times k^2))$ 的无疑是过不了的。</p>
+<p>但是发现 $n$ 的范围很大但 $k^m$ 却小得多似乎指引我们按照值域做。</p>
+<p>仔细一想对于某一位来说，似乎并不需要求出所有的 $n$ 个 $1+\omega_k^t$ 分别是多少，只需要对于每个 $t\in[0,k-1]$ 知道有多少个 $1+\omega_k^t$ 就行了（只需要个数，至于它们具体属于 $n$ 个中的哪几个是无关紧要的）</p>
+<p>那问题就转化为有 $n$ 个数 $\mathbf{V_1,V_2,\cdots,V_{n}}$ ，每一项对于位置 $\mathbf{U}$ 的贡献都是上面那个很长的式子。求对于每个位置 $\mathbf U$ 的每个 $t\in[0,k-1]$ ，在这 $n$ 个数中有多少个数对于他的贡献是 $\omega_k^t$</p>
+<p>这东西看上去异常的难以下手，出题人的标程里写的好像是什么奇奇怪怪的折半引理消去引理的奇淫技巧<del>看不懂</del></p>
+<p>讨论区里又有一位 djq 大爷说是什么单位根反演，但（道理我都懂<del>板子我都抄过</del>，哪里有单位根反演啊/晕）</p>
+<p>然后我不知道怎么搞直接把每个值对应下标加一然后做一遍 DFT ，令人惊奇的发现它！就！对！了！</p>
+<p>（我写到这里一看上面我写的，就想问自己，这**为什么不对啊）</p>
+<p>但这里给读者讲一下<del>（也给将来的我自己）</del>（看懂的就直接跳过好了）：</p>
+<p>大概是对应下标加一后位置 $\mathbf V$ 的系数就是这个 $\mathbf{V}$ 出现的次数，对于每一个 $\mathbf V$ 它对于每个下标 $\mathbf U$ 的影响都是个定值 $\omega_k^t$ 。那么有 $a_{\mathbf V}$ 个，贡献就是 $a_{\mathbf V}\omega_k^t$ 。那么我们直接把这 $a_V$ 个一起做 DFT 肯定是没有问题的（我们每次是 $a_{\mathbf V}$ 加一（而没有改变后面的 $\omega_k^1,\omega_k^2\cdots $ 的项的系数 ），所以最后乘出来对于每个位置的贡献确实就是 $\omega_k^t$ 有多少个算多少个）<del>感觉跟没讲一样，有啥问题评论区问吧</del> </p>
+<p>现在我们知道了对于一个位置 $\mathbf U$ 和 $t\in[0,k-1]$ 有多少个数最后对其的贡献是 $\omega_k^t$ （记为 $a(\mathbf V,t)$ 。那么这些数点积时都会是 $1+\omega_k^t$ 的形式，那么最后点积出来位置 $\mathbf V$ 的值就是 $\prod_{t=0}^{k-1}(1+\omega_k^t)^{a(\mathbf V,t)}$ </p>
+<p>最后再做一遍 IDFT 就能得到最终的答案了，总复杂度大概是 $O(k^{m+2}\sim k^{m+3})$ 左右，如果快速幂没有预处理（见实现细节）可能还要多个 $\log n$ </p>
+<p>好你就这样高高兴兴的写完然后输出每个答案 ( $a_0\omega_k^0+a_1\omega_k^1+\cdots+a_{k-1}\omega_k^{k-1}$ ) 中的 $a_0$ 就发现样例都过不了？？？</p>
+<p>你一看题解发现要输出 $a_0+a_1-a_2-a_3$ 才行？？？而且写了就直接能过？？？</p>
+<p>如果你做过 <a href="https://www.luogu.org/problem/CF1103E" target="_blank" rel="noopener">cf1103E</a> 的话可能也会对洛谷上唯一的题解里最终输出的是 <code>a[i].a[0]-a[i].a[4]</code> 而不是 <code>a[i].a[0]</code> 感到疑惑（然而题解并没有提到这个 magic number 是哪来的（以及他把 $\omega_{10}$ 写成 $-\omega_5^3$ 为啥是对的都没有解释，像我等蒟蒻看的真是难受））</p>
+<p>这里就方便一下我等蒟蒻略作证明（不需要的可以跳过看代码了）：</p>
+<h5 id="k-5"><a href="#k-5" class="headerlink" title="$k=5$"></a>$k=5$</h5><p>先说结论：可以证得：$a_1=a_2=a_3=a_4$ </p>
+<p>（可以像那篇题解一样「带进去检验」，然而对于我等来说真不容易）</p>
+<p>我的证法是：你可以发现最终这个东西一定是个整数，并且无论我们把 $\omega_5^1,\omega_5^2,\omega_5^3,\omega_5^4$ 中的哪一个带入答案都会是整数（这个我确实不会证，应该和 FFT 最后会是不带虚部的实数是同一个原因）</p>
+<p>那么我们在复平面中画出所有的 $\omega_5$ 的幂</p>
+<p><img src="https://s2.ax1x.com/2019/11/08/ME5GSP.png" alt="pic1"></p>
+<p>我们最后要得到 $a_0\omega_5^0+a_1\omega_5^1+a_2\omega_5^2+a_3\omega_5^3+a_4\omega_5^4$ 是一个不带虚部的整数</p>
+<p>有 </p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x=a_0+a_1\sin18^{\circ}+a_4\sin 18^{\circ}-a_2\cos 36^{\circ}-a_3\cos 36^{\circ}\in \mathbf Z
+\\
+y=a_1\cos 18^{\circ}-a_4\cos 18^{\circ}+a_2\sin 36^{\circ}-a_3\sin 36^{\circ}=0 
+\end{cases}</script><p>而 $\sin 18^{\circ}=\frac{\sqrt 5-1}4,\cos 18^{\circ}=\frac{\sqrt{10+2\sqrt 5}}4,\sin 36^{\circ}=\frac{\sqrt{10-2\sqrt 5}}4,\cos 36^{\circ}=\frac{1+\sqrt 5}4$</p>
+<p>所以得到</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+a_0+(a_1+a_4)\sin 18^{\circ}-(a_2+a_3)\cos 36^{\circ}=a_0+(a_1+a_4)\frac{\sqrt 5-1}4-(a_2+a_3)\frac{\sqrt 5 +1}4\\=\frac {\sqrt 5 }4(a_1+a_4-a_2-a_3)+\frac 14(4a_0-a_1-a_4-a_2-a_3)\in \mathbf Z\\
+(a_1-a_4)\cos 18^{\circ}+(a_2-a_3)\sin 36^{\circ}=(a_1-a_4)\frac{\sqrt{10+2\sqrt 5}}4+(a_2-a_3)\frac{\sqrt{10-2\sqrt 5}}{4}=0
+\end{cases}</script><p>又因为 $a_0,a_1,a_2,a_3,a_4\in \mathbf Z$ ，由上面的第二个式子得到 $a_1-a_4=a_2-a_3=0$ ，又由第一个式子得到 $a_1+a_4-a_2-a_3=0$ 于是就有 $a_1=a_2=a_3=a_4$</p>
+<blockquote>
+<p>实际上不严谨的证明大概想一下上下对应的系数一定相同才能使得最后 $y$ 被抵消完落在 $x$ 轴上成为不带虚部的整数，左右两边如果相同的话就是 $\cos 72^{\circ}-\cos 36^{\circ}=-\frac 12$ 是个有理数 <del>感觉是对的</del></p>
+</blockquote>
+<p>知道这个后求值就很简单了：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&a_0\omega_5^0+a_1\omega_5^1+a_2\omega_5^2+a_3\omega_5^3+a_4\omega_5^4
+\\=&
+a_0+a_1(\omega_5^1+\omega_5^2+\omega_5^3+\omega_5^4)
+\\=&
+a_0+a_1(\frac{\omega_5-\omega_5^5}{1-\omega_5})
+\\=&
+a_0-a_1
+\end{aligned}</script><p>当然也可以直接用刚才三角函数的式子： $x=\frac {\sqrt 5 }4(a_1+a_4-a_2-a_3)+\frac 14(4a_0-a_1-a_4-a_2-a_3)=a_0-a_1$</p>
+<h5 id="k-6"><a href="#k-6" class="headerlink" title="$k=6$"></a>$k=6$</h5><p>也差不多，不知道其他人怎么证的我还是画了个图：</p>
+<p><img src="https://s2.ax1x.com/2019/11/08/ME53Wt.png" alt="pic2"></p>
+<p>和刚才类似的，我们可以得到</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x=a_0+a_1\cos 60^{\circ}-a_2\cos 60^{\circ}-a_3-a_4\cos 60^{\circ}+a_5\cos 60^{\circ}\in \mathbf Z\\
+y=a_1\sin 60^{\circ}+a_2\sin 60^{\circ}-a_4\sin 60^{\circ}-a_5\sin 60^{\circ}=0
+\end{cases}</script><p>$\sin 60^{\circ}=\frac{\sqrt 3}2,\cos 60^{\circ}=\frac 12$ ，我们得到 $a_1+a_2-a_4-a_5=0$ 以及 $x=a_0-a_3+\frac 12(a_1-a_2-a_4+a_5)\in \mathbf Z$</p>
+<p>这里并不能保证上下对应位置的系数相等了（即不能保证 $a_1=a_2=a_4=a_5$ ），但由 $a_1+a_2-a_4-a_5=0$ 可以得到 $a_1-a_4=a_5-a_2$ 得到 $x=a_0-a_3+\frac 12(a_1-a_4+a_5-a_2)=a_0-a_3+a_1-a_4$</p>
+<p>答案就是 $a_0+a_1-a_4-a_3$ （题解里好像是 $a_0+a_1-a_2-a_3$ 所以应该可以证明 $a_2=a_4,a_1=a_5$ ？感觉我还不会证，欢迎交流。<del>反正打表出来是对的那我们就当它是对的</del> ）</p>
+<h4 id="一些实现上的细节"><a href="#一些实现上的细节" class="headerlink" title="一些实现上的细节"></a>一些实现上的细节</h4><ol>
+<li>求 $1+\omega_k^t$ 在 $t=0$ 的时候是 $1+1=2$ 注意不要对应系数直接赋值成 $1$ 了</li>
+<li>$(1+\omega_k^t)^{a(\mathbf V,t)}$ 的时候快速幂可能被卡常，可以预处理出 $(1+\omega_k^t)^{1000}$ 的幂来加速</li>
+<li>$k=5$ 也可以用 $a_0+a_1-a_2-a_3$ 表示（ $=a_0-a_1$ ）不用分类讨论</li>
+<li>DFT 时的单位根只有一项有值，可以把 $O(k^2)$ 的乘法优化成 $O(k)$ <del>我太懒了就没写</del></li>
+</ol>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FIO <span class="meta-string">"P5577"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">20</span>]; <span class="keyword">int</span> bufl,bufr;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getch ((bufl^bufr||(bufl=0,bufr=fread(buf,1,1&lt;&lt;20,stdin)))?buf[bufl++]:EOF)</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;<span class="title">inline</span> <span class="title">void</span> <span class="title">read</span> (<span class="title">T</span> &amp;<span class="title">x</span>,<span class="title">const</span> <span class="title">int</span> &amp;<span class="title">bas</span>=10) &#123;</span></span><br><span class="line">	T f=<span class="number">1</span>;</span><br><span class="line">	x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getch;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span> (ch)&amp;&amp;ch!=<span class="string">'-'</span>; ch=getch);</span><br><span class="line">	<span class="keyword">if</span> (ch==<span class="string">'-'</span>)f=<span class="number">-1</span>,ch=getch;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span> (ch); ch=getch)x=x*bas+ch-<span class="string">'0'</span>;</span><br><span class="line">	x*=f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD=<span class="number">998244353</span>,V=<span class="number">6</span>,N=<span class="built_in">pow</span>(<span class="number">5</span>,<span class="number">7</span>)+<span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;a+=b;<span class="keyword">return</span> a&gt;=MOD?a-MOD:a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;a-=b;<span class="keyword">return</span> a&lt;		<span class="number">0</span>?a+MOD:a;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> <span class="number">1l</span>l*a*b%MOD;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>&amp; <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> a=add(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>&amp; <span class="title">dec</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> a=sub(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span>&amp; <span class="title">pro</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)</span></span>&#123;<span class="keyword">return</span> a=mul(a,b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">int</span> c=<span class="number">1</span>;<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,pro(a,a))<span class="keyword">if</span>(b&amp;<span class="number">1</span>)pro(c,a);<span class="keyword">return</span> c;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,m;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Com</span>&#123;</span></span><br><span class="line">  <span class="keyword">int</span> a[V];</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>&#123;a[<span class="number">0</span>]=a[<span class="number">1</span>]=a[<span class="number">2</span>]=a[<span class="number">3</span>]=a[<span class="number">4</span>]=a[<span class="number">5</span>]=<span class="number">0</span>;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="title">Com</span><span class="params">()</span></span>&#123;clear();&#125;</span><br><span class="line">  <span class="keyword">inline</span> <span class="keyword">int</span>&amp; <span class="keyword">operator</span> [](<span class="keyword">int</span> x)&#123;<span class="keyword">return</span> a[x];&#125;</span><br><span class="line">  <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keyword">int</span>&amp; <span class="keyword">operator</span> [](<span class="keyword">const</span> <span class="keyword">int</span> &amp;x)<span class="keyword">const</span>&#123;<span class="keyword">return</span> a[x];&#125;</span><br><span class="line">  <span class="keyword">inline</span> Com <span class="keyword">operator</span> +(<span class="keyword">const</span> Com &amp;b)<span class="keyword">const</span>&#123;Com c;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)c[i]=add(a[i],b[i]);<span class="keyword">return</span> c;&#125;</span><br><span class="line">  <span class="keyword">inline</span> Com <span class="keyword">operator</span> -(<span class="keyword">const</span> Com &amp;b)<span class="keyword">const</span>&#123;Com c;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)c[i]=sub(a[i],b[i]);<span class="keyword">return</span> c;&#125;</span><br><span class="line">  <span class="keyword">inline</span> Com <span class="keyword">operator</span> *(<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)<span class="keyword">const</span>&#123;Com c;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)c[i]=mul(a[i],b);<span class="keyword">return</span> c;&#125;</span><br><span class="line">  <span class="keyword">inline</span> Com&amp; <span class="keyword">operator</span> +=(<span class="keyword">const</span> Com &amp;b)&#123;<span class="keyword">return</span> *<span class="keyword">this</span>=*<span class="keyword">this</span>+b;&#125;</span><br><span class="line">  <span class="keyword">inline</span> Com&amp; <span class="keyword">operator</span> *=(<span class="keyword">const</span> <span class="keyword">int</span> &amp;b)&#123;<span class="keyword">return</span> *<span class="keyword">this</span>=*<span class="keyword">this</span>*b;&#125;</span><br><span class="line">  <span class="keyword">inline</span> Com <span class="keyword">operator</span> *(<span class="keyword">const</span> Com &amp;b)<span class="keyword">const</span>&#123;</span><br><span class="line">    <span class="keyword">static</span> ll r[V&lt;&lt;<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">const</span> ll Moc=<span class="number">8l</span>l*MOD*MOD;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)<span class="keyword">if</span>(a[i])<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;k;j++)<span class="keyword">if</span>(b[j])&#123;</span><br><span class="line">      r[i+j]+=<span class="number">1l</span>l*a[i]*b[j];</span><br><span class="line">      <span class="keyword">if</span>(r[i+j]&gt;=Moc)r[i+j]-=Moc;</span><br><span class="line">    &#125;</span><br><span class="line">    Com c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)c[i]=(r[i]+r[i+k])%MOD,r[i]=r[i+k]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">inline</span> Com&amp; <span class="keyword">operator</span> *=(<span class="keyword">const</span> Com &amp;b)&#123;<span class="keyword">return</span> *<span class="keyword">this</span>=*<span class="keyword">this</span>*b;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span>&#123;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)<span class="built_in">printf</span>(<span class="string">"%d%c"</span>,a[i],i^(k<span class="number">-1</span>)?<span class="string">' '</span>:<span class="string">'\n'</span>);&#125;</span><br><span class="line">  <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">val</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sub(add(a[<span class="number">0</span>],a[<span class="number">1</span>]),add(a[<span class="number">2</span>],a[<span class="number">3</span>]));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;a[N],w[<span class="number">2</span>][V],b[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</span><br><span class="line">  w[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>]=w[<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">  w[<span class="number">0</span>][<span class="number">1</span>][<span class="number">1</span>]=w[<span class="number">1</span>][<span class="number">1</span>][k<span class="number">-1</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;k;i++)</span><br><span class="line">    w[<span class="number">0</span>][i]=w[<span class="number">0</span>][i<span class="number">-1</span>]*w[<span class="number">0</span>][<span class="number">1</span>],w[<span class="number">1</span>][i]=w[<span class="number">1</span>][i<span class="number">-1</span>]*w[<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//inline Com qpow(Com a,int b)&#123;Com c;c[0]=1;for(;b;b&gt;&gt;=1,a*=a)if(b&amp;1)c*=a;return c;&#125;</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> B=<span class="number">1000</span>;</span><br><span class="line">Com pw0[B+<span class="number">5</span>],pw1[B+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> Com <span class="title">qpow</span><span class="params">(Com a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> pw1[b/B]*pw0[b%B];&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getpow</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)b[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)&#123;</span><br><span class="line">    Com omega;</span><br><span class="line">    <span class="comment">//!!! i=1 gg </span></span><br><span class="line">    omega[<span class="number">0</span>]=<span class="number">1</span>;omega[i]++;</span><br><span class="line">    pw0[<span class="number">0</span>][<span class="number">0</span>]=pw1[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=B;i++)pw0[i]=pw0[i<span class="number">-1</span>]*omega;</span><br><span class="line">    pw1[<span class="number">1</span>]=pw0[B];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=B;i++)pw1[i]=pw1[i<span class="number">-1</span>]*pw1[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> id=<span class="number">0</span>;id&lt;n;id++)b[id]*=qpow(omega,a[id][i]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)a[i]=b[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> pw[V];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">fft</span><span class="params">(<span class="keyword">int</span> opt)</span></span>&#123;</span><br><span class="line">  pw[<span class="number">0</span>]=<span class="number">1</span>;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;m;i++)pw[i]=pw[i<span class="number">-1</span>]*k;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">    <span class="keyword">if</span>(!((j/pw[i])%k))&#123;</span><br><span class="line">      <span class="keyword">static</span> Com f[V];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;k;x++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;y&lt;k;y++)</span><br><span class="line">          f[y]+=a[j+pw[i]*x]*w[opt][x*y%k];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>;x&lt;k;x++)</span><br><span class="line">        a[j+pw[i]*x]=f[x],f[x].clear();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span>(opt)<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,inv=qpow(n,MOD<span class="number">-2</span>);i&lt;n;i++)a[i]*=inv;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(FIO<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(FIO<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line"> read(n);read(k);read(m);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,x;i&lt;=n;i++)read(x,k),a[x][<span class="number">0</span>]++;</span><br><span class="line">  n=qpow(k,m);</span><br><span class="line">  pre();</span><br><span class="line"></span><br><span class="line">  fft(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  getpow();</span><br><span class="line"></span><br><span class="line">  fft(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a[i].val());</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://buzhibujue.cf/2019/11/08/洛谷5577/" title="洛谷5577" target="_blank" rel="external">https://buzhibujue.cf/2019/11/08/洛谷5577/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liubei121212" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liubei121212" target="_blank"><span class="text-dark">不知不觉</span><small class="ml-1x">Oier &amp; Student</small></a></h3>
+        <div>Never Settle</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/11/24/CSP2019游记/" title="csp2019游记"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/10/21/线性基/" title="线性基"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'dUYIOlsqHv5VgCljRF9mTTtv-gzGzoHsz',
+    appKey: 'HRaJc2h4HiPKBHSGP9lyU5tx',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+</body>
+</html>

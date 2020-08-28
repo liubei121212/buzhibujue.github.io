@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang=de>
+<head><meta name="generator" content="Hexo 3.8.0">
+<script data-ad-client="ca-pub-8970649379030660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>杜教筛与莫比乌斯反演 | Imperceptible</title>
+  <meta name="description" content="首先是杜教筛套路式子  求\sum_{x=1}^n f(x)其中n很大一般$10^9 \sim 2^{32}​$ 左右导致常规线性筛超时 一般做法： 令S(x)=\sum_{i=1}^{x}f(i)\\再找一和$f$卷积起来有特殊性质的函数$g(x)$  \begin{align}  \sum_{i=1}^{n}f*g(i)  &amp;=\sum_{i=1}^{n}\sum_{d|i}g(d)*f(\f">
+<meta name="keywords" content="数学,莫比乌斯反演">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杜教筛与莫比乌斯反演">
+<meta property="og:url" content="https://buzhibujue.cf/2018/10/13/杜教筛与莫比乌斯反演/index.html">
+<meta property="og:site_name" content="Imperceptible">
+<meta property="og:description" content="首先是杜教筛套路式子  求\sum_{x=1}^n f(x)其中n很大一般$10^9 \sim 2^{32}​$ 左右导致常规线性筛超时 一般做法： 令S(x)=\sum_{i=1}^{x}f(i)\\再找一和$f$卷积起来有特殊性质的函数$g(x)$  \begin{align}  \sum_{i=1}^{n}f*g(i)  &amp;=\sum_{i=1}^{n}\sum_{d|i}g(d)*f(\f">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-03T15:35:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="杜教筛与莫比乌斯反演">
+<meta name="twitter:description" content="首先是杜教筛套路式子  求\sum_{x=1}^n f(x)其中n很大一般$10^9 \sim 2^{32}​$ 左右导致常规线性筛超时 一般做法： 令S(x)=\sum_{i=1}^{x}f(i)\\再找一和$f$卷积起来有特殊性质的函数$g(x)$  \begin{align}  \sum_{i=1}^{n}f*g(i)  &amp;=\sum_{i=1}^{n}\sum_{d|i}g(d)*f(\f">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://buzhibujue.cf/2018/10/13/杜教筛与莫比乌斯反演/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Imperceptible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liubei121212" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">不知不觉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Oier &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chengdu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>Never Settle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU/">HDU</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LOJ/">LOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SPOJ/">SPOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/总结/">总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/洛谷/">洛谷</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DP/" style="font-size: 13px;">DP</a> <a href="/tags/FFT/" style="font-size: 13.17px;">FFT</a> <a href="/tags/LCT/" style="font-size: 13px;">LCT</a> <a href="/tags/NTT/" style="font-size: 13.17px;">NTT</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/凸包/" style="font-size: 13px;">凸包</a> <a href="/tags/动态DP/" style="font-size: 13px;">动态DP</a> <a href="/tags/图论/" style="font-size: 13.17px;">图论</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/思维/" style="font-size: 13.5px;">思维</a> <a href="/tags/扩域/" style="font-size: 13px;">扩域</a> <a href="/tags/数学/" style="font-size: 13.67px;">数学</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/水题/" style="font-size: 13px;">水题</a> <a href="/tags/线性基/" style="font-size: 13px;">线性基</a> <a href="/tags/组合数学/" style="font-size: 13px;">组合数学</a> <a href="/tags/莫比乌斯反演/" style="font-size: 13px;">莫比乌斯反演</a> <a href="/tags/计数/" style="font-size: 14px;">计数</a> <a href="/tags/错排/" style="font-size: 13px;">错排</a> <a href="/tags/随笔/" style="font-size: 13.83px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/28/AFO/" class="title">AFO</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-28T14:21:36.000Z" itemprop="datePublished">2020-06-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/LOJ/">LOJ</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/26/loj2474/" class="title">LOJ2474</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-26T04:00:00.000Z" itemprop="datePublished">2020-04-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/22/图计数/" class="title">图计数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/18/fft/" class="title">FFT&amp;NTT</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/codeforces/">codeforces</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/05/cf886E/" class="title">cf886E</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-05T02:43:37.000Z" itemprop="datePublished">2020-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-杜教筛与莫比乌斯反演" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      杜教筛与莫比乌斯反演
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/10/13/杜教筛与莫比乌斯反演/" class="article-date">
+	  <time datetime="2018-10-13T14:51:13.000Z" itemprop="datePublished">2018-10-13</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/总结/">总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/数学/">数学</a>, <a class="article-tag-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/13/杜教筛与莫比乌斯反演/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>首先是杜教筛套路式子</p>
+<script type="math/tex; mode=display">
+求\sum_{x=1}^n f(x)</script><p>其中n很大一般$10^9 \sim 2^{32}​$ 左右导致常规线性筛超时</p>
+<h2 id="一般做法："><a href="#一般做法：" class="headerlink" title="一般做法："></a>一般做法：</h2><script type="math/tex; mode=display">
+令S(x)=\sum_{i=1}^{x}f(i)\\</script><p>再找一和$f$卷积起来有特殊性质的函数$g(x)$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+ \sum_{i=1}^{n}f*g(i) 
+&=\sum_{i=1}^{n}\sum_{d|i}g(d)*f(\frac{i}{d})\\
+&=\sum_{d=1}^{n}g(d)*\sum_{d|i}f(\frac{i}{d})\\
+&=\sum_{d=1}^{n}g(d)*\sum_{i=1}^{n/d}f(i)\\
+&=\sum_{d=1}^{n}g(d)*S(\frac{n}{d}) \\
+&=\sum_{d=2}^{n}g(d)*S(\frac{n}{d})+g(1)*S(n)
+\end{align}</script><p>然后就发现右边等式最后一项除以$g(1)$是要求的答案</p>
+<p>而  $\displaystyle\sum_{d=2}^{n}g(d)*S(\frac{n}{d}) $  这玩意可以递归下去</p>
+<p> $\displaystyle\sum_{i=1}^n f*g(i)$ 一般会在我们的选择下比较好算</p>
+<hr>
+<p>先是一道模板题</p>
+<h2 id="BZOJ3944"><a href="#BZOJ3944" class="headerlink" title="BZOJ3944"></a><a href="https://lydsy.com/JudgeOnline/problem.php?id=3944" target="_blank" rel="noopener">BZOJ3944</a></h2><blockquote>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>给定一个正整数N(N&lt;=$2^{31}-1$)求<br>$ans1=\displaystyle\sum_{i=1}^{n} \phi(i) \quad\ ans2= \displaystyle\sum_{i=1}^n \mu(i)  $</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>一共$T+1$行<br>第$1$行为数据组数$T(T&lt;=10)$<br>第$2~T+1$行每行一个非负整数N，代表一组询问</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>一共T行，每行两个用空格分隔的数ans1,ans2</p>
+</blockquote>
+<p>对于这道题可以知道</p>
+<script type="math/tex; mode=display">
+\begin{align}
+(\mu * 1)&=[x=1] \\
+\phi*1&=x \\
+令g(x)&=1 \\
+对于 \mu\\
+\sum_{i=1}^{n}f*g(i)&=1\\
+所以S(n)&=1-\sum_{d=2}^{n}S(n/d)\\
+对于\phi \\
+\sum_{i=1}^{n}f*g(i)&=1+2+\dots+n=\frac{n(n+1)}{2}\\
+所以S(n)&=\frac{n(n+1)}{2}-\sum_{d=2}^{n}S(n/d)
+\end{align}</script><p>具体实现我就使用map了=.=</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> opt,<span class="keyword">unsigned</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (x&lt;MAXN)	<span class="keyword">return</span> opt?sum1[x]:sum0[x];</span><br><span class="line">	<span class="keyword">if</span> (M[opt][x])	<span class="keyword">return</span> M[opt][x];</span><br><span class="line">	ll ret=opt?<span class="number">1l</span>l:<span class="number">1l</span>l*x*(x+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">unsigned</span> i=<span class="number">2</span>,j=<span class="number">2</span>;i&lt;=x;i=j+<span class="number">1</span>)&#123;</span><br><span class="line">		j=x/(x/i);</span><br><span class="line">		ret-=solve(opt,x/i)*(j-i+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> M[opt][x]=ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>傻逼题讲完了T.T</p>
+<hr>
+<h2 id="BZOJ3930"><a href="#BZOJ3930" class="headerlink" title="BZOJ3930"></a><a href="https://lydsy.com/JudgeOnline/problem.php?id=3930" target="_blank" rel="noopener">BZOJ3930</a></h2><blockquote>
+<h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><p>我们知道，从区间[L,H]（L和H为整数）中选取N个整数，总共有$(H-L+1)^N$种方案。小z很好奇这样选出的数的最大公约数的规律，他决定对每种方案选出的N个整数都求一次最大公约数，以便进一步研究。然而他很快发现工作量太大了，于是向你寻求帮助。你的任务很简单，小z会告诉你一个整数K，你需要回答他最大公约数刚好为K的选取方案有多少个。由于方案数较大，你只需要输出其除以1000000007的余数即可。</p>
+<h3 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h3><p>输入一行，包含4个空格分开的正整数，依次为N，K，L和H。</p>
+<h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><p>输出一个整数，为所求方案数。</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 2 2 4</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>样例解释<br>所有可能的选择方案：(2, 2), (2, 3), (2, 4), (3, 2), (3, 3), (3, 4), (4, 2), (4, 3), (4, 4)<br>其中最大公约数等于2的只有3组：(2, 2), (2, 4), (4, 2)<br>对于100%的数据，$1≤N,K≤10^9，1≤L≤H≤10^9，H-L≤10^5$</p>
+</blockquote>
+<p>一看这数据范围就懵逼了=.=</p>
+<p>先$L,R都除以K$就变成求区间$gcd=1$的方案了</p>
+<p>然后看上去要杜教筛不过$R-L&lt;=10^5​$可以枚举选的N个数的$ gcd​$</p>
+<p>一堆差不超过$10^5 $的数的$gcd$也在$10^5$以内（易证）</p>
+<script type="math/tex; mode=display">
+令f(x)表示gcd恰好为x的方案数 \\
+g(x)表示gcd是x的倍数的方案数 可以O(1)求\\
+\begin{align}
+然后g(x)&=\sum_{x|d}f(d) \\
+通过反演模板
+f(x)&=\sum_{x|d}\mu(d)f(x/d)\\
+得f(1)&=\sum_{i=1}\mu(i)g(i)
+\end{align}</script><p>$g(x)$ 怎么求？</p>
+<p>区间任选$N$个数使得都是一个数$x$的倍数=.=快速幂搞搞</p>
+<p>并且选的这$N$个数不能全部一样</p>
+<p>所以选的方案要减去这个区间的数的个数（刚好这么多种所有数都一样的方案）</p>
+<p>还有个特判为区间是否包含1，包含$1的话有1种全部都是1$时的$gcd为1$</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">getf</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lt=(L%x)?L/x+<span class="number">1</span>:L/x,rt=R/x;</span><br><span class="line">	<span class="keyword">return</span> add(qpow(rt-lt+<span class="number">1</span>,N),-rt+lt<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	pre();</span><br><span class="line">	read(N);read(K);read(L);read(R);</span><br><span class="line">	L=L%K?L/K+<span class="number">1</span>:L/K;R/=K;n=R-L;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		ans=add(ans,mul(mu[i],getf(i)));</span><br><span class="line">	<span class="keyword">if</span> (L&lt;=<span class="number">1</span> &amp;&amp; <span class="number">1</span>&lt;=R)	ans=add(ans,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="BZOJ3529"><a href="#BZOJ3529" class="headerlink" title="BZOJ3529"></a><a href="https://lydsy.com/JudgeOnline/problem.php?id=3529" target="_blank" rel="noopener">BZOJ3529</a></h2><blockquote>
+<h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><p>有一张$ n×m$ 的数表，其第 $i$ 行第$ j$ 列$（1 &lt;= i &lt;= n, 1 &lt;= j &lt;= m）$的数值为<br>能同时整除 $i$ 和$ j$ 的所有自然数之和。给定$ a$ , 计算数表中不大于$ a$ 的数之和。</p>
+<h3 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h3><p>输入包含多组数据。<br>输入的第一行一个整数$Q$表示测试点内的数据组数<br>接下来$Q$行，每行三个整数$n，m，a(|a| &lt; =10^9)$描述一组数据。<br>$1 &lt; =N．m &lt; =10^5  ， 1 &lt; =Q &lt; =2×10^4$</p>
+<h3 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h3><p>对每组数据，输出一行一个整数，表示答案模$2^31$的值。</p>
+<h3 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">4 4 3</span><br><span class="line">10 10 5</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">20</span><br><span class="line">148</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>好像很难搞=.=不过1e5数据范围可以不用<strong>杜教筛</strong> 吼啊</p>
+<p>写成数学符号就是</p>
+<script type="math/tex; mode=display">
+令F(x)=\sum_{i|x}^{x}i\\
+求\sum_{i=1}^{N}\sum_{j=1}^{M}[F(gcd(i,j)<=a]F(gcd(i,j))</script><p>啥玩意没听过==</p>
+<h3 id="先考虑简化版问题：不考虑a的影响怎么做"><a href="#先考虑简化版问题：不考虑a的影响怎么做" class="headerlink" title="先考虑简化版问题：不考虑a的影响怎么做"></a>先考虑简化版问题：<strong>不考虑a的影响</strong>怎么做</h3><p>首先约数和$F(x)$可以线性筛预处理:</p>
+<p>假设$p$是个质数</p>
+<script type="math/tex; mode=display">
+\begin{align}
+F(p)&=p+1\\
+F(x*p)&=F(x)*F(p)\quad(gcd(x,p)=1)\\
+F(x*p)&=F(x)/(p^0+p^1+...p^n)*(p^0+p^1+...+p^{n+1})\quad (gcd(x,p)=p)\\
+\end{align}</script><p>非常好然后我们可以</p>
+<script type="math/tex; mode=display">
+\begin{align}
+令g(x)&=\sum_{i=1}^N\sum_{j=1}^{M}[gcd(i,j)=x]\\
+&=\sum_{i=1}^{N/x}\sum_{j=1}^{M/x}[gcd(i,j)=1]\\
+&=\sum_{i=1}^{N/x}\sum_{j=1}^{M/x}\sum_{d|gcd(i,j)}\mu(d)\\
+&=\sum_{d=1}^{min(N/x,M/x)}\mu(d)*[\frac{N}{x*d}]*[\frac{M}{x*d}]\\
+\end{align}</script><p>令$k=x*d$</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{k=x}^{min(N,M)}[\frac{N}{k}][\frac{M}{k}]\mu(\frac{k}{x})</script><p>所以答案就是</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{min(N,M)}f(i)*g(i)\\
+=\sum_{k=1}^{min(N,M)}[\frac{N}{k}][\frac{M}{k}]\sum_{x|k}\mu(x)*f(k/x)</script><p>就可以用根号分块和预处理前缀和水了</p>
+<h3 id="然后考虑怎么加入a的限制"><a href="#然后考虑怎么加入a的限制" class="headerlink" title="然后考虑怎么加入a的限制"></a>然后考虑怎么加入a的限制</h3><p>emmm</p>
+<p>N,M才$10^5$，可以按$F(x)$排序再将a排序，动态维护下前缀和就好了</p>
+<p>动态维护前缀和的数据结构比如说树状数组</p>
+<p>模$2^{31}$可以<del>自然溢出</del>和$(1&lt;&lt;31)-1$取与</p>
+<p>然后这题就结束了</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</span><br><span class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;t[<span class="number">1</span>]=<span class="number">1</span>;F[<span class="number">1</span>].xx=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span> (!vis[i])	prime[++cnt]=i,vis[i]=i,F[i].xx=i+<span class="number">1</span>,t[i]=i+<span class="number">1</span>,mu[i]=<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt &amp;&amp; i*prime[j]&lt;=MAXN;j++)&#123;</span><br><span class="line">			vis[i*prime[j]]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span> (i%prime[j])	&#123;</span><br><span class="line">                	mu[i*prime[j]]=-mu[i];</span><br><span class="line">                	F[i*prime[j]].xx=F[i].xx*<span class="number">1</span>+prime[j]),t[i*prime[j]]=prime[j]+<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				mu[i*prime[j]]=<span class="number">0</span>;</span><br><span class="line">				t[i*prime[j]]=t[i]*prime[j]+<span class="number">1</span>;</span><br><span class="line">				F[i*prime[j]].xx=F[i].xx/t[i]*t[i*prime[j]];</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=MAXN;i++)	F[i].yy=i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">fadd</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i*F[x].yy&lt;=MAXN;i++)</span><br><span class="line">		add(i*F[x].yy,F[x].xx*mu[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里省略</span></span><br><span class="line">sort(q+<span class="number">1</span>,q+N+<span class="number">1</span>);	sort(F+<span class="number">1</span>,F+MAXN+<span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=N;i++)&#123;</span><br><span class="line">	<span class="keyword">while</span> (j&lt;MAXN&amp;&amp;F[j+<span class="number">1</span>].xx&lt;=q[i].a)	fadd(++j);	</span><br><span class="line">	n=q[i].n;m=q[i].m;</span><br><span class="line">	<span class="keyword">if</span> (n&gt;m)	swap(n,m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> l=<span class="number">1</span>,r=<span class="number">1</span>;l&lt;=n;l=r+<span class="number">1</span>)&#123;</span><br><span class="line">		r=min(n/(n/l),m/(m/l));</span><br><span class="line">		ans[q[i].id]+=(n/l)*(m/l)*(query(r)-query(l<span class="number">-1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="BZOJ4652"><a href="#BZOJ4652" class="headerlink" title="BZOJ4652"></a><a href="https://lydsy.com/JudgeOnline/problem.php?id=4652" target="_blank" rel="noopener">BZOJ4652</a></h2><blockquote>
+<h3 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h3><p>牛牛是一个热爱算法设计的高中生。在他设计的算法中，常常会使用带小数的数进行计算。牛牛认为，如果在$ k$ 进制下，一个数的小数部分是纯循环的，那么它就是美的。现在，牛牛想知道：对于已知的十进制数 $n$ 和 $m$，在 k 进制下，有多少个数值上互不相等的纯循环小数，可以用分数 $\displaystyle\frac{x}{y}$ 表示,其中 $1≤x≤n,1≤y≤m$，且 $x,y$是整数。一个数是纯循环的，当且仅当其可以写成以下形式：$a.\dot c_1c_2c_3…c_{p-1}\dot c_p$其中，$a$ 是一个整数，$p≥1$；对于 $1≤i≤p$，$ci$是 $k$ 进制下的一位数字。例如，在十进制下，$0.45454545……=0.\dot 4\dot 5$是纯循环的，它可以用 $\displaystyle\frac{5}{11},\displaystyle\frac{5}{22}$ 等分数表示；在十进制下，$0.1666666……=0.1\dot 6$则不是纯循环的，它可以用 $\displaystyle\frac{1}{6}$ 等分数表示。需要特别注意的是，我们认为一个整数是纯循环的，因为它的小数部分可以表示成 $0$ 的循环或是 $k-1$ 的循环；而一个小数部分非 $0$的有限小数不是纯循环的。</p>
+<h3 id="Input-3"><a href="#Input-3" class="headerlink" title="Input"></a>Input</h3><p>只有一行，包含三个十进制数N,M,K意义如题所述,保证 $1≤n≤10^9, 1≤m≤10^9,2≤k≤2000$</p>
+<h3 id="Output-3"><a href="#Output-3" class="headerlink" title="Output"></a>Output</h3><p>一行一个整数，表示满足条件的美的数的个数。</p>
+<h3 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 6 10</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h3 id="HINT-1"><a href="#HINT-1" class="headerlink" title="HINT"></a>HINT</h3><p>满足条件的数分别是：<br>1/1=1.0000……<br>1/3=0.3333……<br>2/1=2.0000……<br>2/3=0.6666……<br>1/1 和 2/2 虽然都是纯循环小数，但因为它们相等，因此只计数一次；同样，1/3 和 2/6 也只计数一次。</p>
+</blockquote>
+<p>啥，纯循环小数，没听过0.0</p>
+<p>首先这题很显然可以看出是要求一些分子分母互质的数的个数(不互质的会重复出现)</p>
+<p>先不管那么多式子写起来</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{n}\sum_{j=1}^{m}[gcd(i,j)=1][分数\frac{i}{j}在k进制下纯循环]</script><p>还有一个可能是对的不会证得就是对于一个纯循环小数$\displaystyle\frac ab$ 如果$a\times c$ 仍与分母b互质（不然就被约分消掉了），那么$\displaystyle\frac {a\times c}b$应该仍是个纯循环小数（可能是错的我也不会证），然后就说明了是否为纯循环小数在分子分母互质的情况下与分子关系不大（蛤也不敢说是不是完全没有关系）</p>
+<p>还是以$1$为分子在$10$进制下<del>找找规律</del>打表</p>
+<script type="math/tex; mode=display">
+\begin{align}
+1/1&=1✔\\
+1/2&=0.5❌\\
+1/3&=0.\dot3✔\\
+1/4&=0.25❌\\
+1/5&=0.2❌\\
+1/6&=0.1\dot6❌\\
+1/7&=🐸🐸🐸=0.\dot14285\dot7✔\\
+1/8&=0.125❌\\
+1/9&=0.\dot1✔\\
+1/10&=0.1❌\\
+1/11&=0.\dot0\dot9✔\\
+1/12&=0.08\dot3❌\\
+...
+\end{align}</script><p>将符合要求的分母写下来$1,3,7,9,11$嗯没有偶数，但也跟质数不像，然后通过严谨而又细致的<del>猜测</del>推理我们发现这东西应该是要求分母与k互质</p>
+<p>具体为什么=.=</p>
+<h3 id="证明From-神仙网友"><a href="#证明From-神仙网友" class="headerlink" title="证明From 神仙网友"></a>证明From 神仙网友</h3><p>我们先来回想一下，我们是怎样使用除法来判断一个分数$ \displaystyle\frac xy$是否是纯循环小数的。显然我们是一路除下去，什么时候出现了相同的余数，那么这个数就是一个循环小数。如果第一个重复的余数是$x$，那么这个数就是纯循环小数。这种方法实际上就是存在一个数$l≠0$，使得：</p>
+<script type="math/tex; mode=display">
+xk^l \equiv x (\bmod y)</script><p>　又由于题目要求值不重复，那么我们可以得到$x⊥y$。所以，我们可以推出$k^l≡1 \pmod y\quad (l&gt;0)$。所以我们只需$k⊥y$即可。</p>
+<h3 id="所以事情变成了我们熟悉的样子"><a href="#所以事情变成了我们熟悉的样子" class="headerlink" title="所以事情变成了我们熟悉的样子"></a>所以事情变成了我们熟悉的样子</h3><script type="math/tex; mode=display">
+求\sum_{i=1}^{n}\sum_{j=1}^{m}[gcd(i,j)=1][gcd(j,k)=1]</script><p>然后开始乱搞</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\quad \quad\sum_{i=1}^{n}\sum_{j=1}^{m}[gcd(i,j)=1][gcd(j,k)=1]\\
+&=\sum_{j=1}^{m}[gcd(j,k)=1]\sum_{i=1}^{n}[gcd(i,j)=1]\\
+&=\sum_{j=1}^{m}[gcd(j,k)=1]\sum_{i=1}^{n}\sum_{d|gcd(i,j)}\mu(d)\\
+&=\sum_{d=1}^{n}[gcd(d,k)=1]\mu(d)\sum_{j=1}^{m/d}\sum_{i=1}^{n/d}[gcd(j,k)=1]\\
+&=\sum_{d=1}^{n}[gcd(d,k)=1]\mu(d)[\frac nd]\sum_{j=1}^{m/d}[gcd(j,k)=1]
+\end{align}</script><p>好啊然后发现这个东西怎么看怎么不好算，$d,k$长得很像但又多了个$\mu$所以不能直接合并</p>
+<p>所以<del>开始打暴力</del>可能需要分别计算</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f(x)&=\sum_{i=1}^{x}[gcd(i,k)=1]\\
+g(x,k)&=\sum_{i=1}^{x}[gcd(i,k)=1]\mu(i)这里把k记上是一会有用\\
+\end{align}</script><p>对于上面那个东西由上上道题类似的想法发现$gcd(k,x)&lt;=k$ 如果$i⊥,k$那么所有的$i+k,i+2k,i+3k…$都与$k$互质</p>
+<p>所以只需预处理$1-k$的数中每个数与k互质的数的个数的前缀和（特别注意这玩意不是$\phi$， 因为$\phi(x)$表示小于等于$x$的数中与$x$互质的数个数而不是与$k$互质的数的个数）乘上$x/k$，对于$x$剩下的不满$k$的再单独计算即可。代码其实就一句<code>int f(int x){return (x/K)*F[K]+F[x%K];}</code></p>
+<p>$f(x)$这么简单搞定了，那么$g(x) $能否同理呢？</p>
+<p><del>如果是这样这题就不会是最后一道了</del></p>
+<p>很简单的例子比如$gcd(i,k)=1$那么$gcd(i+k,k)=1$但$mu(i+k)$不一定等于$\mu(i)$ </p>
+<p>于是开始硬刚</p>
+<script type="math/tex; mode=display">
+\begin{align}
+g(x,k)&=\sum_{i=1}^{x}[gcd(i,k)=1]\mu(i)\\
+&=\sum_{i=1}^{x}\mu(i)\sum_{d|gcd(i,k)}\mu(d)\\
+&=\sum_{d|k}^{x}\mu(d)\sum_{i|d}\mu(i)\\
+&=\sum_{d|k}^{x}\mu(d)\sum_{p=1}^{x/d}\mu(p*d)\\
+\end{align}</script><p>然后发现当$gcd(p,d)!=1$时$\mu$为$0$对答案没有贡献，所以考虑$gcd(p,d)=1$时</p>
+<script type="math/tex; mode=display">
+\begin{align}
+g(x,k)&=\sum_{d|k}^{x}\mu^2(d)\sum_{p=1}^{x/d}\mu(p)[gcd(p,d)=1]\\
+&=\sum_{d|k}^x*1*\sum_{p=1}^{x/d}\mu(p)[gcd(p,d)=1]\\
+&=\sum_{d|k}^x\sum_{p=1}^{x/d}\mu(p)[gcd(p,d)=1]
+\end{align}</script><p>突然发现这式子似曾相识。。。</p>
+<blockquote>
+<p>$g(x,k)=\sum_{i=1}^{x}\mu(i)[gcd(i,k)=1]$</p>
+</blockquote>
+<p>！！！</p>
+<p>所以得到</p>
+<script type="math/tex; mode=display">
+g(x,k)=\sum_{d|k}^x g(\frac nd,d)</script><p>对于k=1时找到最开始的定义</p>
+<script type="math/tex; mode=display">
+\begin{align}g(x,1)&=\sum_{i=1}^{x}[gcd(i,1)=1]\mu(i)恒成立\\
+&=\sum_{i=1}^x\mu(i)
+\end{align}</script><p>是我们最开始讲的第一道=.=然后就完了</p>
+<p>然后又变成简单递归题了，复杂度$=O(能过)$</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;pii,<span class="keyword">int</span>&gt;MA;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> (x/K)*F[K]+F[x%K];&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">g</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k)</span></span>&#123;<span class="comment">//比一般杜教筛多了个参数0.0</span></span><br><span class="line">	<span class="keyword">if</span> ((k==<span class="number">1</span> &amp;&amp; x&lt;MAXN)|| !x)	<span class="keyword">return</span> sum[x];</span><br><span class="line">	<span class="keyword">if</span> (MA[pii(x,k)])	<span class="keyword">return</span> MA[pii(x,k)];</span><br><span class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (k==<span class="number">1</span>)&#123;</span><br><span class="line">		ret++;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>,j=<span class="number">2</span>;i&lt;=x;i=j+<span class="number">1</span>)&#123;</span><br><span class="line">			j=x/(x/i);</span><br><span class="line">			ret-=(j-i+<span class="number">1</span>)*g(x/i,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i*i&lt;=k;i++)	<span class="keyword">if</span> (!(k%i))&#123;<span class="comment">//这里也只用枚举到sqrt(k)，因为因数是成对的</span></span><br><span class="line">			<span class="keyword">if</span> (mu[i])ret+=g(x/i,i);			<span class="comment">//这里防止mu[i]等于0白算一堆</span></span><br><span class="line">			<span class="keyword">if</span> (mu[k/i] &amp;&amp; (i*i^k))	ret+=g(x/(k/i),k/i);<span class="comment">//i*i！=k才再算不然贡献算两遍</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MA[pii(x,k)]=ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里还是省略防止ctrl+c</span></span><br><span class="line">	pre();</span><br><span class="line">	n=min(N,M);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;=n;i=j+<span class="number">1</span>)&#123;</span><br><span class="line">		j=min(N/(N/i),M/(M/i));</span><br><span class="line">		cur=S(j,K);</span><br><span class="line">		ans+=(ll)(cur-lst)*f(M/i)*(N/i);</span><br><span class="line">		lst=cur;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>杜教筛是看上去很难实际上也没那么难的东西，希望今天大家都听懂了=.=</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://buzhibujue.cf/2018/10/13/杜教筛与莫比乌斯反演/" title="杜教筛与莫比乌斯反演" target="_blank" rel="external">https://buzhibujue.cf/2018/10/13/杜教筛与莫比乌斯反演/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liubei121212" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liubei121212" target="_blank"><span class="text-dark">不知不觉</span><small class="ml-1x">Oier &amp; Student</small></a></h3>
+        <div>Never Settle</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2018/10/17/BZOJ2144/" title="BZOJ2144"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/10/09/my first blog/" title="My first blog"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'dUYIOlsqHv5VgCljRF9mTTtv-gzGzoHsz',
+    appKey: 'HRaJc2h4HiPKBHSGP9lyU5tx',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+</body>
+</html>

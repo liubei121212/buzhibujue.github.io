@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang=de>
+<head><meta name="generator" content="Hexo 3.8.0">
+<script data-ad-client="ca-pub-8970649379030660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>图计数 | Imperceptible</title>
+  <meta name="description" content="图计数$n$ 个点的有标号 DAG$h_n$ 表示 $n$ 个点的DAG方案数 $f_{n,i}$ 表示一共 $n$ 个点，其中至少 $i$ 个是汇点的方案数 $g_{n,i}$ 表示一共 $n$ 个点，其中恰好 $i$ 个是汇点的方案数 于是有如下恒等式：  f_{n,i}=2^{i(n-i)}\binom ni h_{n-i}\\ f_{n,i}=\sum_{j=i}^n\binom ji g">
+<meta name="keywords" content="计数,数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图计数">
+<meta property="og:url" content="https://buzhibujue.cf/2020/02/22/图计数/index.html">
+<meta property="og:site_name" content="Imperceptible">
+<meta property="og:description" content="图计数$n$ 个点的有标号 DAG$h_n$ 表示 $n$ 个点的DAG方案数 $f_{n,i}$ 表示一共 $n$ 个点，其中至少 $i$ 个是汇点的方案数 $g_{n,i}$ 表示一共 $n$ 个点，其中恰好 $i$ 个是汇点的方案数 于是有如下恒等式：  f_{n,i}=2^{i(n-i)}\binom ni h_{n-i}\\ f_{n,i}=\sum_{j=i}^n\binom ji g">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-28T14:17:31.617Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图计数">
+<meta name="twitter:description" content="图计数$n$ 个点的有标号 DAG$h_n$ 表示 $n$ 个点的DAG方案数 $f_{n,i}$ 表示一共 $n$ 个点，其中至少 $i$ 个是汇点的方案数 $g_{n,i}$ 表示一共 $n$ 个点，其中恰好 $i$ 个是汇点的方案数 于是有如下恒等式：  f_{n,i}=2^{i(n-i)}\binom ni h_{n-i}\\ f_{n,i}=\sum_{j=i}^n\binom ji g">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://buzhibujue.cf/2020/02/22/图计数/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Imperceptible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liubei121212" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">不知不觉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Oier &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chengdu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>Never Settle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU/">HDU</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LOJ/">LOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SPOJ/">SPOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/总结/">总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/洛谷/">洛谷</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DP/" style="font-size: 13px;">DP</a> <a href="/tags/FFT/" style="font-size: 13.17px;">FFT</a> <a href="/tags/LCT/" style="font-size: 13px;">LCT</a> <a href="/tags/NTT/" style="font-size: 13.17px;">NTT</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/凸包/" style="font-size: 13px;">凸包</a> <a href="/tags/动态DP/" style="font-size: 13px;">动态DP</a> <a href="/tags/图论/" style="font-size: 13.17px;">图论</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/思维/" style="font-size: 13.5px;">思维</a> <a href="/tags/扩域/" style="font-size: 13px;">扩域</a> <a href="/tags/数学/" style="font-size: 13.67px;">数学</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/水题/" style="font-size: 13px;">水题</a> <a href="/tags/线性基/" style="font-size: 13px;">线性基</a> <a href="/tags/组合数学/" style="font-size: 13px;">组合数学</a> <a href="/tags/莫比乌斯反演/" style="font-size: 13px;">莫比乌斯反演</a> <a href="/tags/计数/" style="font-size: 14px;">计数</a> <a href="/tags/错排/" style="font-size: 13px;">错排</a> <a href="/tags/随笔/" style="font-size: 13.83px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/28/AFO/" class="title">AFO</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-28T14:21:36.000Z" itemprop="datePublished">2020-06-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/LOJ/">LOJ</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/26/loj2474/" class="title">LOJ2474</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-26T04:00:00.000Z" itemprop="datePublished">2020-04-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/22/图计数/" class="title">图计数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/18/fft/" class="title">FFT&amp;NTT</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/codeforces/">codeforces</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/05/cf886E/" class="title">cf886E</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-05T02:43:37.000Z" itemprop="datePublished">2020-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-图计数" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图计数
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/02/22/图计数/" class="article-date">
+	  <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/总结/">总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/数学/">数学</a>, <a class="article-tag-link" href="/tags/计数/">计数</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/02/22/图计数/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="图计数"><a href="#图计数" class="headerlink" title="图计数"></a>图计数</h1><h2 id="n-个点的有标号-DAG"><a href="#n-个点的有标号-DAG" class="headerlink" title="$n$ 个点的有标号 DAG"></a>$n$ 个点的有标号 DAG</h2><p>$h_n$ 表示 $n$ 个点的<code>DAG</code>方案数</p>
+<p>$f_{n,i}$ 表示一共 $n$ 个点，其中至少 $i$ 个是汇点的方案数</p>
+<p>$g_{n,i}$ 表示一共 $n$ 个点，其中恰好 $i$ 个是汇点的方案数</p>
+<p>于是有如下恒等式：</p>
+<script type="math/tex; mode=display">
+f_{n,i}=2^{i(n-i)}\binom ni h_{n-i}\\
+f_{n,i}=\sum_{j=i}^n\binom ji g_{n,j}\\
+\downarrow\\
+g_{n,i}=\sum_{j=i}^n\binom ji (-1)^{j-i}f_{n,j}\\
+h_{n}=\sum_{i=1}^ng_i</script><p>然后得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+
+h_n=&\sum_{i=1}^ng_i
+\\=&
+\sum_{i=1}^n\sum_{j=1}^n(-1)^{j-i}\binom ji f_j
+\\=&
+\sum_{j=1}^n(-1)^jf_j\sum_{i=1}^n\binom ji(-1)^i
+\\=&
+\sum_{i=1}^n(-1)^i2^{i(n-i)}\binom ni h_{n-i}(-1+[j=0])
+\\=&
+\sum_{i=1}^n(-1)^i2^{i(n-i)}\binom ni h_{n-i}(-1)
+\\=&
+\sum_{i=1}^n(-1)^{i-1}2^{i(n-i)}\binom ni h_{n-i}
+\\=&
+\sum_{i=1}^n(-1)^{i-1}2^{\binom n2-\binom i2-\binom {n-i}2}\frac{n!}{i!(n-i)!}h_{n-i}
+\\=&
+n!2^{\binom n2}\sum_{i=1}^n\frac{(-1)^{i-1}}{2^\binom i2i!}\times \frac{h_{n-i}}{2^\binom {n-i}2(n-i)!}
+\end{aligned}</script><p>然后令 $H(x)=\sum_{i=0}^\infin \frac{h_i}{2^\binom i2 i!}x^i$ ， $G(x)=\sum_{i=1}^\infin \frac{(-1)^{i-1}}{2^\binom i2 i!}x^i$  有 $H(x)=1+H(x)G(x)$ </p>
+<p>所以 $H(x)=\frac{1}{1-G(x)}$ ，使用多项式求逆即可</p>
+<p>对 $h_n=\sum_{i=1}^n(-1)^{i-1}2^{i(n-i)}\binom ni h_{n-i}$ 还有一个组合上的解释：</p>
+<p>考虑 $\sum_{i=0}^n(-1)^i2^{i(n-i)}\binom ni h_{n-i}$ 这个式子，这里每个 $g_i$ 被其大小为奇数的子集贡献 $-1$ ，大小为偶数的子集贡献  $+1$ ，所以得到 $\sum_{i=0}^n(-1)^i2^{i(n-i)}\binom ni h_{n-i}=g_0$ 去掉 $i=0$ 时的贡献得到 $\sum_{i=1}^n(-1)^i2^{i(n-i)}\binom ni h_{n-i}=-g_1-g_2-g_3-\cdots -g_n$ 所以 $h_n=g_1+g_2+g_3+\cdots=\sum_{i=1}^n(-1)^{i-1}2^{i(n-i)}\binom ni h_{n-i}$</p>
+<p><strong>注意：$\binom i2$ 不要写成 $i\times (i-1)$ 忘除以 $2$ 了。。。</strong>以及这个好像 oeis 上叫什么 3-multigraph <del>又可以出毒瘤题了</del></p>
+<hr>
+<h2 id="n-个点有标号的弱连通-DAG"><a href="#n-个点有标号的弱连通-DAG" class="headerlink" title="$n$ 个点有标号的弱连通 DAG"></a>$n$ 个点有标号的弱连通 DAG</h2><p><strong>解一：</strong></p>
+<p>感性理解一下，用上面的东西直接求个<code>ln</code>即可 <del>（怎么学X写题解）</del></p>
+<p><strong>解二：</strong></p>
+<p>令 $f_n$ 表示上面求出来的 $n$ 个点不要求联通<code>DAG</code>数</p>
+<p>$g_n$ 表示要求联通的<code>DAG</code>数</p>
+<p>用可以联通可以不连通的数量减去一定不连通的就是答案，枚举 $1$ 所在连通块大小有</p>
+<script type="math/tex; mode=display">
+g_n=f_n-\sum_{i=1}^{n-1}\binom{n-1}{i-1}g_{i}f_{n-i}</script><p>（实际上和求<code>ln</code>等价的）</p>
+<p>如果要拆开的话就是</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+
+g_n&=f_n-\sum_{i=1}^{n-1}\frac{(n-1)!}{(i-1)!(n-i)!}g_if_{n-i}
+\\&=f_n-(n-1)!\sum_{i=1}^{n-1}\frac{g_i}{(i-1)!}\frac{f_{n-i}}{(n-i)!}
+\\&=
+(n-1)!\left(\frac{f_n}{(n-1)!}-\sum_{i=1}^{n-1}\frac{g_i}{(i-1)!}\frac{f_{n-i}}{(n-i)!}\right)
+
+\end{aligned}</script><p>令 $F(x)=\sum_{i=0}^\infin \frac{f_i}{i!}x^i$ ， $G(x)=\sum_{i=1}^\infin \frac{g_i}{i!}$</p>
+<p>由上面得到</p>
+<script type="math/tex; mode=display">
+G’(x)=F’(x)-G’(x)(F(X)-1)\\
+G‘(x)=\frac{F’(x)}{F(x)}\\
+G(x)=\int\frac{F’(x)}{F(x)}=\ln F(x)</script><p>所以这玩意确实是直接求 $\operatorname{ln}$ 即可</p>
+<hr>
+<h2 id="给定一无向图的边集，计算给所有无向边定向使得-1-号点恰好能访问到点集-S-的方案数"><a href="#给定一无向图的边集，计算给所有无向边定向使得-1-号点恰好能访问到点集-S-的方案数" class="headerlink" title="给定一无向图的边集，计算给所有无向边定向使得 $1$ 号点恰好能访问到点集 $S$ 的方案数"></a>给定一无向图的边集，计算给所有无向边定向使得 $1$ 号点恰好能访问到点集 $S$ 的方案数</h2><p>设 $f_S$ 为只考虑 $S$ 内部的无向边定向后的答案， $ans_S$ 为题目中所求的答案，则 $ \complement_U S$ 与 $S$ 之间的边一定是从前者到后者，记 $E_S$ 表示 $S$ 内部连边的数量，则</p>
+<script type="math/tex; mode=display">
+f_S=2^{E_S}-\sum_{T\subsetneq S}f_T\times 2^{E_{S\oplus T}}\\
+ans_S=f_S\times 2^{E_{\complement _US}}</script><hr>
+<h2 id="n-个点的仙人掌"><a href="#n-个点的仙人掌" class="headerlink" title="$n$ 个点的仙人掌"></a>$n$ 个点的仙人掌</h2><p>$C(x)=x\exp((\sum_{i\geq 2}\frac{C(x)^i}{2})+C(x))=x\exp(\frac{2C(x)-C(x)^2)}{2-2C(x)}{})$</p>
+<p>令 $G(C(x))=x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})-C(x)$</p>
+<p>$C(x)=C_0(x)-\frac{G(C_0(x)))}{G’(C_0(x))}$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+G'(C(x))&=
+\left(x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})-C(x)\right)'
+\\&=
+x\left(\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})\right)'-1
+\\&=
+x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})\times \left(\frac{2C(x)-C(x)^2}{2-2C(x)}\right)'-1
+\\&=
+x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})\times \left(1+\frac{4C(x)-2C(x)^2}{(2-2C(x))^2}\right)-1
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+C_1(x)
+&=
+C(x)-\frac{G(C(x))}{G'(C(x))}
+\\&=
+C(x)-\frac{x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})-C(x)}{x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})\times \left(1+\frac{4C(x)-2C(x)^2}{(2-2C(x))^2}\right)-1}
+\\&=
+C(x)-\frac{x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})-C(x)}{x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})\times \left(\frac{2C(x)^2-4C(x)+4}{(2-2C(x))^2}\right)-1}
+\\&=
+C(x)-\frac{2x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})-2C(x)}{x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})\times \left(\frac{C(x)^2-2C(x)+2}{(1-C(x))^2}\right)-2}
+\\&=
+C(x)-\frac{2x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})-2C(x)}{x\exp(\frac{2C(x)-C(x)^2}{2-2C(x)})\times \left(1+\frac{1}{(1-C(x))^2}\right)-2}
+\end{aligned}</script><hr>
+<h2 id="n-个点的有标号点双"><a href="#n-个点的有标号点双" class="headerlink" title="$n$ 个点的有标号点双"></a>$n$ 个点的有标号点双</h2><p>记 $n$ 个点的<strong>有根</strong>连通图的 EGF 为 $H(x)$，$n$ 个点的<strong>点双</strong>个数的 EGF 为 $B(x)$</p>
+<p>对于一个<strong>有根</strong>连通图，找到根节点所在的点双，<strong>删掉点双内部所有的连边</strong>，一定会形成一个中间的根和若干个有根的连通块。所以得到 $H(x)=x\times \sum_{i=0}^\infin b_{i+1}\frac{(H(x))^i}{i!}=xe^{B_1(H(x))}$ 其中 $B_1(x)=\sum_{i=0}^\infin b_{i+1}\frac{x^i}{i!}=B`(x)$ </p>
+<p>有 $H^{-1}(H(x))=x,\frac{H(x)}{e^{B_1(H(x))}}=x$ 比较系数得到 $H^{-1}(x)=\frac{x}{e^{B_1(x)}}$ </p>
+<p>得到 $B_1(x)=\ln(\frac{x}{H^{-1}(x)})$ </p>
+<blockquote>
+<p><strong>求 $B_1(x)$ 第 $n$ 项：</strong></p>
+<p>考虑拓展拉格朗日反演的形式</p>
+<p>令 $ff(H^{-1}(x))=B_1(x)=\ln(\frac{x}{H^{-1}(x)})$ ，得到 $ff(H^{-1}(H(x)))=ff(x)=\ln(\frac{H(x)}{x})$ 。</p>
+<p>所以 $[x^n]B_1(x)=[x^n]ff(H^{-1}(x))=\frac 1n[x^{n-1}]ff’(x)(\frac{x}{H(x)})^n$</p>
+</blockquote>
+<hr>
+<h2 id="n-个点的有标号边双"><a href="#n-个点的有标号边双" class="headerlink" title="$n$ 个点的有标号边双"></a>$n$ 个点的有标号边双</h2><p>设 $n$ 个点的<strong>有根</strong>连通图的 EGF 为 $H(x)$，$n$ 个点的<strong>边双</strong>个数的 EGF 为 $B(x)$</p>
+<p>考虑一个<strong>有根</strong>联通图，令根节点所在的边双的点数为 $n$，选根是这个边双中的哪一个有 $n$ 种选法。考虑缩边双形成的 BCC 树，根节点所在的超级点会有若干子树，每个子树都是一个有根联通图，可以选超级点中任意一个连边，一个子树 EGF 就是 $nH(x)$ ，若干个就是 $e^{nH(x)}$</p>
+<p>得到 $H(x)=\sum_{i}i\times \frac{b_i}{i!}x^ie^{iH(x)}=\sum_{i=0}^\infin\frac{b_{i+1}}{i!}x^{i+1}e^{(i+1)H(x)}=xe^{H(x)}\sum_{i=0}^\infin\frac{b_{i+1}}{i!}(xe^{H(x)})^i=B_1(xe^{H(x)})$， 其中 $B_1(x)=x\times\sum_i\frac{b_{i+1}}{i!}x^i=xB’(x)$ 于是得</p>
+<p>到 $H(x)=B_1(xe^{H(x)})$ </p>
+<blockquote>
+<p><strong>求 $B_1(x)$ 第 $n$ 项：</strong></p>
+<p>$x=H(H^{-1}(x))=B_1(H^{-1}(x)e^x)$</p>
+<p>$G(x)=xe^{H(x)}$ 所以 $B(G(x))=H(x)$，$B(x)=H(G^{-1}(x))$ </p>
+<p>$[x^n]B_1(x)=H(G^{-1}(x))=\frac 1n[x^{n-1}]H’(x)(\frac{x}{G(x)})^n$</p>
+</blockquote>
+<hr>
+<h2 id="n-个点有标号强连通图"><a href="#n-个点有标号强连通图" class="headerlink" title="$n$ 个点有标号强连通图"></a>$n$ 个点有标号强连通图</h2><p>令 $h_n$ 表示 $n$ 个点有向图个数。定义集合 $S$ 的权值是 $(-1)^{|S|}$，设 $e_n$ 表示（这个集合里所有元素都是强连通图）所有这样的     集合内元素总点数为 $n$ 的集合的权值和。</p>
+<script type="math/tex; mode=display">
+e_n=-\sum_{i=1}^ne^{n-i}\times h_i\times 2^{i(n-i)}\times \binom ni
+\\
+ans_n=-e_n-\sum_{i=1}^{n-1}ans_i\times e_{n-i}\times \binom{n-1}{i-1}</script><hr>
+<h2 id="给定无向图的边的子集满足形成边双的方案数"><a href="#给定无向图的边的子集满足形成边双的方案数" class="headerlink" title="给定无向图的边的子集满足形成边双的方案数"></a>给定无向图的边的子集满足形成边双的方案数</h2><p>记 $f(S)$ 为 $S$ 形成连通图方案数，$h(S,T)$ 为 $S$ 分成若干块且每块都和 $T$ 连恰好一条边的方案数</p>
+<script type="math/tex; mode=display">
+ans[S]=f[S]-\sum_{\min S\in S_0\subseteq S}ans[S_0]\times h[S\backslash S_0][S_0]\\
+h[S][T]=
+\begin{cases}
+1,&S=\varnothing
+\\
+\sum_{\min S\in S_0\subsetneq S}h[S\oplus S_0][T]\times f[S_0]\times edge(S_0,T),&\text{otherwise}
+\end{cases}</script><p> $edge(S,T)$ 直接 $E(S\oplus T)-E(S)-E(T)$即可</p>
+<hr>
+<h2 id="给定有向图的边的子集满足形成强连通的方案数"><a href="#给定有向图的边的子集满足形成强连通的方案数" class="headerlink" title="给定有向图的边的子集满足形成强连通的方案数"></a>给定有向图的边的子集满足形成强连通的方案数</h2><p>$f[S]$ 表示把集合 $S$ 分为非强连通分量的方案数</p>
+<p>$h_k[S]$ 表示把集合 $S$ 分为 $k$ 个 $SCC$ 的方案数</p>
+<p>$ans[S]$ 表示把集合 $S$ 分为 $1$ 个 $SCC$ 的方案数（也即是 $h_1[S]$ ）</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f[S]&=\sum_{\varnothing\neq T\subseteq S}(-1)^{|T|-1}\times f[T]\times 2^{edge(T,S\backslash T)}\\
+&=
+\sum_{\varnothing\neq T\subseteq S}\sum_{k=1}^{|T|}(-1)^{k-1}\times h_k[T]\times 2^{edge(T,S\backslash T)}\times 2^{E(S\backslash T)}
+\\
+&=
+\sum_{\varnothing\neq T\subseteq S}g[T]\times 2^{edge(T,S\backslash T)+E(S\backslash T)}\\
+定义其中的
+g[S]&=
+\sum_{i=1}^{\max}h_{2i-1}[S]-\sum_{i=1}^{\max}h_{2i}[S]\\
+&=
+ans[S]-\sum_{\min S\in T\subsetneq S}ans[T]\times g[S\backslash T]\\
+ans[S]&=2^{E(S)}-f[S]
+\end{align}</script><p>对于 $edge(T,S\backslash T)$ , 令 $u=\min S\backslash T$</p>
+<script type="math/tex; mode=display">
+edge(T,S\backslash T)=edge(T\cup u,(S\backslash T)\backslash u)-edge(u,(S\backslash T)\backslash u)+edge(T,u)</script><p>后两项可以通过预处理一个点的出度集合和入度集合来快速计算</p>
+<p><strong>Q：</strong> 算 $f[S]$ 时要用到 $g[S]$ 但算 $g[S] $ 时不是应该加上当前的 $ans[S]$ 吗，$ans[S]$ 又要通过 $f[S]$ 求？</p>
+<p><strong>A:</strong> 想一下我们现在求的是什么：当前情况的合法状态数 $ans[S]$ 。这个要通过 $2^{E[S]}-f[S]$ 实现，那么就要把之前算的答案导致的不合法情况容斥掉，而 $g$ 的意义只是为了我们后面再算的时候降低复杂度，是我们“定义”出来的一个值，没有什么实际含义，即我们只需要算之前的 $g[T]$ 导致的不合法情况并删除，剩下的就是现在合法的情况数，然后再用这个去更新现在的 $g[S]$ 以便以后用到的时候值正确</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://buzhibujue.cf/2020/02/22/图计数/" title="图计数" target="_blank" rel="external">https://buzhibujue.cf/2020/02/22/图计数/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liubei121212" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liubei121212" target="_blank"><span class="text-dark">不知不觉</span><small class="ml-1x">Oier &amp; Student</small></a></h3>
+        <div>Never Settle</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/04/26/loj2474/" title="LOJ2474"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/02/18/fft/" title="FFT&amp;NTT"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'dUYIOlsqHv5VgCljRF9mTTtv-gzGzoHsz',
+    appKey: 'HRaJc2h4HiPKBHSGP9lyU5tx',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+</body>
+</html>

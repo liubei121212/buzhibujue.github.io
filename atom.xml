@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Imperceptible</title>
+  
+  <subtitle>Never Settle</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://buzhibujue.cf/"/>
+  <updated>2020-08-28T14:22:05.610Z</updated>
+  <id>https://buzhibujue.cf/</id>
+  
+  <author>
+    <name>不知不觉</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AFO</title>
+    <link href="https://buzhibujue.cf/2020/06/28/AFO/"/>
+    <id>https://buzhibujue.cf/2020/06/28/AFO/</id>
+    <published>2020-06-28T14:21:36.000Z</published>
+    <updated>2020-08-28T14:22:05.610Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;AFO&quot;&gt;&lt;a href=&quot;#AFO&quot; class=&quot;headerlink&quot; title=&quot;AFO&quot;&gt;&lt;/a&gt;AFO&lt;/h1&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LOJ2474</title>
+    <link href="https://buzhibujue.cf/2020/04/26/loj2474/"/>
+    <id>https://buzhibujue.cf/2020/04/26/loj2474/</id>
+    <published>2020-04-26T04:00:00.000Z</published>
+    <updated>2020-05-03T15:33:14.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;LOJ2474&quot;&gt;&lt;a href=&quot;#LOJ2474&quot; class=&quot;headerlink&quot; title=&quot;LOJ2474&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://loj.ac/problem/2474&quot; target=&quot;_blank&quot; rel=&quot;noopen
+      
+    
+    </summary>
+    
+      <category term="LOJ" scheme="https://buzhibujue.cf/categories/LOJ/"/>
+    
+    
+      <category term="图论" scheme="https://buzhibujue.cf/tags/%E5%9B%BE%E8%AE%BA/"/>
+    
+      <category term="LCT" scheme="https://buzhibujue.cf/tags/LCT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图计数</title>
+    <link href="https://buzhibujue.cf/2020/02/22/%E5%9B%BE%E8%AE%A1%E6%95%B0/"/>
+    <id>https://buzhibujue.cf/2020/02/22/图计数/</id>
+    <published>2020-02-22T10:45:00.000Z</published>
+    <updated>2020-08-28T14:17:31.617Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;图计数&quot;&gt;&lt;a href=&quot;#图计数&quot; class=&quot;headerlink&quot; title=&quot;图计数&quot;&gt;&lt;/a&gt;图计数&lt;/h1&gt;&lt;h2 id=&quot;n-个点的有标号-DAG&quot;&gt;&lt;a href=&quot;#n-个点的有标号-DAG&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+      <category term="总结" scheme="https://buzhibujue.cf/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="计数" scheme="https://buzhibujue.cf/tags/%E8%AE%A1%E6%95%B0/"/>
+    
+      <category term="数学" scheme="https://buzhibujue.cf/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FFT&amp;NTT</title>
+    <link href="https://buzhibujue.cf/2020/02/18/fft/"/>
+    <id>https://buzhibujue.cf/2020/02/18/fft/</id>
+    <published>2020-02-18T14:08:01.000Z</published>
+    <updated>2020-05-03T15:47:50.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;FFT-amp-NTT&quot;&gt;&lt;a href=&quot;#FFT-amp-NTT&quot; class=&quot;headerlink&quot; title=&quot;FFT&amp;amp;NTT&quot;&gt;&lt;/a&gt;FFT&amp;amp;NTT&lt;/h1&gt;&lt;h2 id=&quot;FFT&quot;&gt;&lt;a href=&quot;#FFT&quot; class=&quot;he
+      
+    
+    </summary>
+    
+      <category term="总结" scheme="https://buzhibujue.cf/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="NTT" scheme="https://buzhibujue.cf/tags/NTT/"/>
+    
+      <category term="数学" scheme="https://buzhibujue.cf/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="FFT" scheme="https://buzhibujue.cf/tags/FFT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cf886E</title>
+    <link href="https://buzhibujue.cf/2020/02/05/cf886E/"/>
+    <id>https://buzhibujue.cf/2020/02/05/cf886E/</id>
+    <published>2020-02-05T02:43:37.000Z</published>
+    <updated>2020-05-03T15:35:10.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;cf886E&quot;&gt;&lt;a href=&quot;#cf886E&quot; class=&quot;headerlink&quot; title=&quot;cf886E&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://codeforces.com/problemset/problem/886/E&quot; target=&quot;_bl
+      
+    
+    </summary>
+    
+      <category term="codeforces" scheme="https://buzhibujue.cf/categories/codeforces/"/>
+    
+    
+      <category term="计数" scheme="https://buzhibujue.cf/tags/%E8%AE%A1%E6%95%B0/"/>
+    
+      <category term="容斥" scheme="https://buzhibujue.cf/tags/%E5%AE%B9%E6%96%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>THUWC2020</title>
+    <link href="https://buzhibujue.cf/2020/01/21/THUWC2020/"/>
+    <id>https://buzhibujue.cf/2020/01/21/THUWC2020/</id>
+    <published>2020-01-21T13:50:01.000Z</published>
+    <updated>2020-08-28T14:20:05.393Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;THUWC2020&quot;&gt;&lt;a href=&quot;#THUWC2020&quot; class=&quot;headerlink&quot; title=&quot;THUWC2020&quot;&gt;&lt;/a&gt;THUWC2020&lt;/h1&gt;&lt;h2 id=&quot;Day1&quot;&gt;&lt;a href=&quot;#Day1&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>csp2019游记</title>
+    <link href="https://buzhibujue.cf/2019/11/24/CSP2019%E6%B8%B8%E8%AE%B0/"/>
+    <id>https://buzhibujue.cf/2019/11/24/CSP2019游记/</id>
+    <published>2019-11-24T15:28:15.000Z</published>
+    <updated>2020-05-03T15:33:54.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;CSP2019-游记&quot;&gt;&lt;a href=&quot;#CSP2019-游记&quot; class=&quot;headerlink&quot; title=&quot;CSP2019 游记&quot;&gt;&lt;/a&gt;CSP2019 游记&lt;/h1&gt;&lt;p&gt;转眼就过了一年，去年看着高二学长的状态就感觉他们的心境会和当时的我完全不同，
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洛谷5577</title>
+    <link href="https://buzhibujue.cf/2019/11/08/%E6%B4%9B%E8%B0%B75577/"/>
+    <id>https://buzhibujue.cf/2019/11/08/洛谷5577/</id>
+    <published>2019-11-08T08:23:54.000Z</published>
+    <updated>2020-05-03T15:36:14.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;洛谷5577&quot;&gt;&lt;a href=&quot;#洛谷5577&quot; class=&quot;headerlink&quot; title=&quot;洛谷5577&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.luogu.org/problem/P5577&quot; target=&quot;_blank&quot; rel=&quot;n
+      
+    
+    </summary>
+    
+      <category term="洛谷" scheme="https://buzhibujue.cf/categories/%E6%B4%9B%E8%B0%B7/"/>
+    
+    
+      <category term="FFT" scheme="https://buzhibujue.cf/tags/FFT/"/>
+    
+      <category term="扩域" scheme="https://buzhibujue.cf/tags/%E6%89%A9%E5%9F%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>线性基</title>
+    <link href="https://buzhibujue.cf/2019/10/21/%E7%BA%BF%E6%80%A7%E5%9F%BA/"/>
+    <id>https://buzhibujue.cf/2019/10/21/线性基/</id>
+    <published>2019-10-21T12:58:01.000Z</published>
+    <updated>2020-05-03T15:40:24.000Z</updated>
+    
+    <summary type="html">
+    
+      Here&#39;s something encrypted, password is required to continue reading.
+    
+    </summary>
+    
+      <category term="总结" scheme="https://buzhibujue.cf/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="线性基" scheme="https://buzhibujue.cf/tags/%E7%BA%BF%E6%80%A7%E5%9F%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cf1214F</title>
+    <link href="https://buzhibujue.cf/2019/09/10/cf1214F/"/>
+    <id>https://buzhibujue.cf/2019/09/10/cf1214F/</id>
+    <published>2019-09-10T14:43:37.000Z</published>
+    <updated>2020-05-03T15:35:00.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;cf1214F&quot;&gt;&lt;a href=&quot;#cf1214F&quot; class=&quot;headerlink&quot; title=&quot;cf1214F&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://codeforces.com/contest/1214/problem/F&quot; target=&quot;_
+      
+    
+    </summary>
+    
+      <category term="codeforces" scheme="https://buzhibujue.cf/categories/codeforces/"/>
+    
+    
+      <category term="思维" scheme="https://buzhibujue.cf/tags/%E6%80%9D%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>组合数学</title>
+    <link href="https://buzhibujue.cf/2019/08/16/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    <id>https://buzhibujue.cf/2019/08/16/组合数学/</id>
+    <published>2019-08-16T15:16:05.000Z</published>
+    <updated>2020-05-03T17:14:24.000Z</updated>
+    
+    <summary type="html">
+    
+      Here&#39;s something encrypted, password is required to continue reading.
+    
+    </summary>
+    
+      <category term="总结" scheme="https://buzhibujue.cf/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="计数" scheme="https://buzhibujue.cf/tags/%E8%AE%A1%E6%95%B0/"/>
+    
+      <category term="组合数学" scheme="https://buzhibujue.cf/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HDU4997</title>
+    <link href="https://buzhibujue.cf/2019/08/15/HDU4997/"/>
+    <id>https://buzhibujue.cf/2019/08/15/HDU4997/</id>
+    <published>2019-08-15T12:07:34.000Z</published>
+    <updated>2020-05-03T15:34:06.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;HDU4997&quot;&gt;&lt;a href=&quot;#HDU4997&quot; class=&quot;headerlink&quot; title=&quot;HDU4997&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://acm.hdu.edu.cn/showproblem.php?pid=4997&quot; target=&quot;
+      
+    
+    </summary>
+    
+      <category term="HDU" scheme="https://buzhibujue.cf/categories/HDU/"/>
+    
+    
+      <category term="计数" scheme="https://buzhibujue.cf/tags/%E8%AE%A1%E6%95%B0/"/>
+    
+      <category term="容斥" scheme="https://buzhibujue.cf/tags/%E5%AE%B9%E6%96%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UOJ37</title>
+    <link href="https://buzhibujue.cf/2019/08/12/UOJ37/"/>
+    <id>https://buzhibujue.cf/2019/08/12/UOJ37/</id>
+    <published>2019-08-12T09:16:44.000Z</published>
+    <updated>2020-05-03T15:34:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;UOJ37&quot;&gt;&lt;a href=&quot;#UOJ37&quot; class=&quot;headerlink&quot; title=&quot;UOJ37&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://uoj.ac/problem/37&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;UOJ37
+      
+    
+    </summary>
+    
+      <category term="UOJ" scheme="https://buzhibujue.cf/categories/UOJ/"/>
+    
+    
+      <category term="计数" scheme="https://buzhibujue.cf/tags/%E8%AE%A1%E6%95%B0/"/>
+    
+      <category term="容斥" scheme="https://buzhibujue.cf/tags/%E5%AE%B9%E6%96%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>字符串选讲</title>
+    <link href="https://buzhibujue.cf/2019/08/10/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%89%E8%AE%B2/"/>
+    <id>https://buzhibujue.cf/2019/08/10/字符串选讲/</id>
+    <published>2019-08-10T02:01:10.000Z</published>
+    <updated>2020-05-03T15:35:46.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;字符串选讲&quot;&gt;&lt;a href=&quot;#字符串选讲&quot; class=&quot;headerlink&quot; title=&quot;字符串选讲&quot;&gt;&lt;/a&gt;字符串选讲&lt;/h1&gt;&lt;p&gt;只会讲几个&lt;del&gt;简单&lt;/del&gt;模版，&lt;del&gt;觉得简单的可以跑路了&lt;/del&gt;整理一下概念，难度&lt;strong
+      
+    
+    </summary>
+    
+      <category term="总结" scheme="https://buzhibujue.cf/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="字符串" scheme="https://buzhibujue.cf/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SPOJ DIV1CNT</title>
+    <link href="https://buzhibujue.cf/2019/06/14/SPOJDIV1CNT/"/>
+    <id>https://buzhibujue.cf/2019/06/14/SPOJDIV1CNT/</id>
+    <published>2019-06-14T01:29:50.000Z</published>
+    <updated>2020-05-03T15:34:36.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;SPOJ-DIV1CNT&quot;&gt;&lt;a href=&quot;#SPOJ-DIV1CNT&quot; class=&quot;headerlink&quot; title=&quot;SPOJ DIV1CNT&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.spoj.com/problems/AFS3/&quot; targ
+      
+    
+    </summary>
+    
+      <category term="SPOJ" scheme="https://buzhibujue.cf/categories/SPOJ/"/>
+    
+    
+      <category term="数学" scheme="https://buzhibujue.cf/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="凸包" scheme="https://buzhibujue.cf/tags/%E5%87%B8%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019江苏省队集训Day6T2</title>
+    <link href="https://buzhibujue.cf/2019/06/13/2019%E6%B1%9F%E8%8B%8F%E7%9C%81%E9%98%9F%E9%9B%86%E8%AE%ADDay6T2/"/>
+    <id>https://buzhibujue.cf/2019/06/13/2019江苏省队集训Day6T2/</id>
+    <published>2019-06-13T05:57:51.000Z</published>
+    <updated>2020-05-03T15:33:28.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;【2019-江苏省队第一轮集训】D6T2-计数&quot;&gt;&lt;a href=&quot;#【2019-江苏省队第一轮集训】D6T2-计数&quot; class=&quot;headerlink&quot; title=&quot;【2019 江苏省队第一轮集训】D6T2 计数&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://
+      
+    
+    </summary>
+    
+    
+      <category term="计数" scheme="https://buzhibujue.cf/tags/%E8%AE%A1%E6%95%B0/"/>
+    
+      <category term="NTT" scheme="https://buzhibujue.cf/tags/NTT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SCOI2019总结</title>
+    <link href="https://buzhibujue.cf/2019/04/16/SCOI2019%E6%80%BB%E7%BB%93/"/>
+    <id>https://buzhibujue.cf/2019/04/16/SCOI2019总结/</id>
+    <published>2019-04-16T15:04:58.000Z</published>
+    <updated>2020-05-03T15:34:32.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;SCOI2019-总结&quot;&gt;&lt;a href=&quot;#SCOI2019-总结&quot; class=&quot;headerlink&quot; title=&quot;SCOI2019 总结&quot;&gt;&lt;/a&gt;SCOI2019 总结&lt;/h1&gt;&lt;hr&gt;
+&lt;h3 id=&quot;Day-1&quot;&gt;&lt;a href=&quot;#Day-1&quot; 
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>动态DP</title>
+    <link href="https://buzhibujue.cf/2018/12/08/%E5%8A%A8%E6%80%81DP/"/>
+    <id>https://buzhibujue.cf/2018/12/08/动态DP/</id>
+    <published>2018-12-07T16:24:00.000Z</published>
+    <updated>2020-05-03T15:35:38.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从$NOIPD2T3$发现的神仙玩意，虽然可能没啥用但还是试试学一学顺便练练码力。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;保卫王国&quot;&gt;&lt;a href=&quot;#保卫王国&quot; class=&quot;headerlink&quot; title=&quot;保卫王国&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www
+      
+    
+    </summary>
+    
+      <category term="总结" scheme="https://buzhibujue.cf/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="DP" scheme="https://buzhibujue.cf/tags/DP/"/>
+    
+      <category term="动态DP" scheme="https://buzhibujue.cf/tags/%E5%8A%A8%E6%80%81DP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NOIP2018杂记</title>
+    <link href="https://buzhibujue.cf/2018/11/14/NOIP2018%E6%9D%82%E8%AE%B0/"/>
+    <id>https://buzhibujue.cf/2018/11/14/NOIP2018杂记/</id>
+    <published>2018-11-14T14:55:08.000Z</published>
+    <updated>2020-05-03T15:38:36.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;DAY-0&quot;&gt;&lt;a href=&quot;#DAY-0&quot; class=&quot;headerlink&quot; title=&quot;DAY 0&quot;&gt;&lt;/a&gt;DAY 0&lt;/h3&gt;&lt;p&gt;考前默默打了下配置文件练手，记不到怎么调用系统复制粘贴啥的啥啥啥的，准备用自带的辣鸡寄存器复制粘贴就学习了一下命令&lt;
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="https://buzhibujue.cf/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洛谷4921</title>
+    <link href="https://buzhibujue.cf/2018/11/02/%E6%B4%9B%E8%B0%B74921/"/>
+    <id>https://buzhibujue.cf/2018/11/02/洛谷4921/</id>
+    <published>2018-11-02T15:19:08.000Z</published>
+    <updated>2020-05-03T15:36:08.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;洛谷4921&quot;&gt;&lt;a href=&quot;#洛谷4921&quot; class=&quot;headerlink&quot; title=&quot;洛谷4921&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.luogu.org/problemnew/show/P4921&quot; target=&quot;_blank
+      
+    
+    </summary>
+    
+      <category term="洛谷" scheme="https://buzhibujue.cf/categories/%E6%B4%9B%E8%B0%B7/"/>
+    
+    
+      <category term="计数" scheme="https://buzhibujue.cf/tags/%E8%AE%A1%E6%95%B0/"/>
+    
+      <category term="错排" scheme="https://buzhibujue.cf/tags/%E9%94%99%E6%8E%92/"/>
+    
+  </entry>
+  
+</feed>

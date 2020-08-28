@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang=de>
+<head><meta name="generator" content="Hexo 3.8.0">
+<script data-ad-client="ca-pub-8970649379030660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>FFT&amp;NTT | Imperceptible</title>
+  <meta name="description" content="FFT&amp;amp;NTTFFTDFT单位根定义  $\omega_n=\cos (\frac {2\pi}{n})+i\sin (\frac {2\pi}{n})$  得到 $\omega_n^k=\cos(\frac{2k\pi}{n})+i\sin(\frac{2k\pi}{n})$ 单位根性质   $\omega_n^0=1,\omega_n^{n/2}=-1$ $\omega_{dn}^{d">
+<meta name="keywords" content="NTT,数学,FFT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFT&amp;NTT">
+<meta property="og:url" content="https://buzhibujue.cf/2020/02/18/fft/index.html">
+<meta property="og:site_name" content="Imperceptible">
+<meta property="og:description" content="FFT&amp;amp;NTTFFTDFT单位根定义  $\omega_n=\cos (\frac {2\pi}{n})+i\sin (\frac {2\pi}{n})$  得到 $\omega_n^k=\cos(\frac{2k\pi}{n})+i\sin(\frac{2k\pi}{n})$ 单位根性质   $\omega_n^0=1,\omega_n^{n/2}=-1$ $\omega_{dn}^{d">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-03T15:47:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FFT&amp;NTT">
+<meta name="twitter:description" content="FFT&amp;amp;NTTFFTDFT单位根定义  $\omega_n=\cos (\frac {2\pi}{n})+i\sin (\frac {2\pi}{n})$  得到 $\omega_n^k=\cos(\frac{2k\pi}{n})+i\sin(\frac{2k\pi}{n})$ 单位根性质   $\omega_n^0=1,\omega_n^{n/2}=-1$ $\omega_{dn}^{d">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://buzhibujue.cf/2020/02/18/fft/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Imperceptible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//cdn.jsdelivr.net/npm/katex@0.9.0/dist/katex.min.css" rel="stylesheet">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liubei121212" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">不知不觉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Oier &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chengdu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>Never Settle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU/">HDU</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LOJ/">LOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SPOJ/">SPOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/总结/">总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/洛谷/">洛谷</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DP/" style="font-size: 13px;">DP</a> <a href="/tags/FFT/" style="font-size: 13.17px;">FFT</a> <a href="/tags/LCT/" style="font-size: 13px;">LCT</a> <a href="/tags/NTT/" style="font-size: 13.17px;">NTT</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/凸包/" style="font-size: 13px;">凸包</a> <a href="/tags/动态DP/" style="font-size: 13px;">动态DP</a> <a href="/tags/图论/" style="font-size: 13.17px;">图论</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/思维/" style="font-size: 13.5px;">思维</a> <a href="/tags/扩域/" style="font-size: 13px;">扩域</a> <a href="/tags/数学/" style="font-size: 13.67px;">数学</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/水题/" style="font-size: 13px;">水题</a> <a href="/tags/线性基/" style="font-size: 13px;">线性基</a> <a href="/tags/组合数学/" style="font-size: 13px;">组合数学</a> <a href="/tags/莫比乌斯反演/" style="font-size: 13px;">莫比乌斯反演</a> <a href="/tags/计数/" style="font-size: 14px;">计数</a> <a href="/tags/错排/" style="font-size: 13px;">错排</a> <a href="/tags/随笔/" style="font-size: 13.83px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/28/AFO/" class="title">AFO</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-28T14:21:36.000Z" itemprop="datePublished">2020-06-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/LOJ/">LOJ</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/26/loj2474/" class="title">LOJ2474</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-26T04:00:00.000Z" itemprop="datePublished">2020-04-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/22/图计数/" class="title">图计数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/18/fft/" class="title">FFT&amp;NTT</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/codeforces/">codeforces</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/05/cf886E/" class="title">cf886E</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-05T02:43:37.000Z" itemprop="datePublished">2020-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-fft" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FFT&amp;NTT
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/02/18/fft/" class="article-date">
+	  <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/总结/">总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/FFT/">FFT</a>, <a class="article-tag-link" href="/tags/NTT/">NTT</a>, <a class="article-tag-link" href="/tags/数学/">数学</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/02/18/fft/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="FFT-amp-NTT"><a href="#FFT-amp-NTT" class="headerlink" title="FFT&amp;NTT"></a>FFT&amp;NTT</h1><h2 id="FFT"><a href="#FFT" class="headerlink" title="FFT"></a>FFT</h2><h3 id="DFT"><a href="#DFT" class="headerlink" title="DFT"></a>DFT</h3><p><strong>单位根定义</strong></p>
+<blockquote>
+<p>$\omega_n=\cos (\frac {2\pi}{n})+i\sin (\frac {2\pi}{n})$</p>
+</blockquote>
+<p>得到 $\omega_n^k=\cos(\frac{2k\pi}{n})+i\sin(\frac{2k\pi}{n})$</p>
+<p><strong>单位根性质</strong></p>
+<blockquote>
+<ol>
+<li>$\omega_n^0=1,\omega_n^{n/2}=-1$</li>
+<li>$\omega_{dn}^{dk}=\omega_{n}^{k}$</li>
+<li>$\omega_{n}^{i+n/2}=\omega_{n}^{n/2}\cdot\omega_{n}^{i}=-\omega_{n}^{i}$</li>
+</ol>
+</blockquote>
+<p>令 $F_n(x)=\sum_{i=0}^{n-1}f_ix^i$</p>
+<p>$F_0(x)=\sum_{i=0}^{n/2-1}f_{2i}x^i,F_1(x)=\sum_{i=0}^{n/2-1}f_{2i+1}x^i$</p>
+<p>得到</p>
+<p>$F(x)=F_0(x^2)+xF_1(x^2)$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+F(\omega_n^i)&=F_0(\omega_n^{2i})+\omega_n^iF_1(\omega_n^{2i})
+\\&=
+F_0(\omega_{n/2}^i)+\omega_n^iF_1(\omega_{n/2}^i)
+\\
+F(\omega_n^{i+n/2})&=F(-\omega_n^{i})=F_0(\omega_n^{2i})-\omega_n^iF_1(\omega_n^{2i})
+\\&=
+F_0(\omega_{n/2}^i)-\omega_n^iF_1(\omega_{n/2}^i)
+\end{aligned}</script><p>每一项系数 $f_i$ 对第 $j$ 个点值表示的贡献是 $f_i(\omega_n^j)^i$</p>
+<h3 id="IDFT"><a href="#IDFT" class="headerlink" title="IDFT"></a>IDFT</h3><p>把<code>DFT</code>的过程写成矩阵的形式</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+ (\omega_n^0)^0 & (\omega_n^0)^1 & \cdots & (\omega_n^0)^{n-1} \\
+ (\omega_n^1)^0 & (\omega_n^1)^1 & \cdots & (\omega_n^1)^{n-1} \\
+ \vdots & \vdots & \ddots & \vdots \\
+ (\omega_n^{n-1})^0 & (\omega_n^{n-1})^1 & \cdots & (\omega_n^{n-1})^{n-1} 
+\end{bmatrix} 
+\begin{bmatrix}
+ f_0 \\ f_1 \\ \vdots \\ f_{n-1} 
+\end{bmatrix} 
+= 
+\begin{bmatrix} 
+F(\omega_n^0) \\ 
+F(\omega_n^1) \\ 
+\vdots \\ 
+F(\omega_n^{n-1}) 
+\end{bmatrix}</script><p>尝试得到左边矩阵（记为 $\mathbf V$ ）的逆，<del>精心构造得到：</del></p>
+<script type="math/tex; mode=display">
+\mathbf D = \begin{bmatrix} (\omega_n^{-0})^0 & (\omega_n^{-0})^1 & \cdots & (\omega_n^{-0})^{n-1} \\ (\omega_n^{-1})^0 & (\omega_n^{-1})^1 & \cdots & (\omega_n^{-1})^{n-1} \\ \vdots & \vdots & \ddots & \vdots \\ (\omega_n^{-(n-1)})^0 & (\omega_n^{-(n-1)})^1 & \cdots & (\omega_n^{-(n-1)})^{n-1} \end{bmatrix}</script><p>发现若 $\mathbf{E=D\cdot V}$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+e_{i,j}&=\sum_{k=0}^{n-1}v_{i,k}d_{k,j}
+\\&=
+\sum_{k=0}^{n-1}v_{i,k}d_{k,j}
+\\&=
+\sum_{k=0}^{n-1}
+(\omega_n^i)^k
+(\omega_n^{-k})^j
+\\&=
+\sum_{k=0}^{n-1}
+(\omega_n^k)^{i-j}
+\\&=
+\begin{cases}
+n,&i=j\\
+\sum_{k=0}^{n-1}
+(\omega_n^{i-j})^k
+=\frac{1-(\omega_n^{i-j})^{n}}{1-\omega_n^{i-j}}=0,&i\neq j
+\end{cases}
+\end{aligned}</script><p>所以得到<br>$\mathbf{D\cdot V}=\mathbf E=n\cdot \mathbf I$</p>
+<p>即 $\frac 1n\mathbf D=\mathbf V^{-1}$</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix} f_0 \\ f_1 \\ \vdots \\ f_{n-1} \end{bmatrix} = \frac{1}{n} \begin{bmatrix} (\omega_n^{-0})^0 & (\omega_n^{-0})^1 & \cdots & (\omega_n^{-0})^{n-1} \\ (\omega_n^{-1})^0 & (\omega_n^{-1})^1 & \cdots & (\omega_n^{-1})^{n-1} \\ \vdots & \vdots & \ddots & \vdots \\ (\omega_n^{-(n-1)})^0 & (\omega_n^{-(n-1)})^1 & \cdots & (\omega_n^{-(n-1)})^{n-1} \end{bmatrix} \begin{bmatrix} F(\omega_n^0) \\ F(\omega_n^1) \\ \vdots \\ F(\omega_n^{n-1}) \end{bmatrix}</script><p>把<code>IDFT</code>的系数取倒数（即直接虚部取相反数）做一遍<code>DFT</code>再除以 $n$ 即可</p>
+<hr>
+<h2 id="NTT"><a href="#NTT" class="headerlink" title="NTT"></a>NTT</h2><blockquote>
+<p>对于一个质数 $p$ ，其原根 $g$ 满足 $g^0,g^1,g^2,\cdots ,g^{p−2}$ 在模 $p$ 意义下两两不同</p>
+</blockquote>
+<p>所以 $\omega_n\to g^{(p-1)/n}$</p>
+<p>这就需要 $p-1$ 是 $2$ 的幂</p>
+<blockquote>
+<ol>
+<li>$\omega_n^0=1,\omega_n^{n/2}=-1$</li>
+</ol>
+</blockquote>
+<p>$(g^{(p-1)/n})^0=g^0=1$</p>
+<p>$(g^{(p-1)/2})^2=g^{p-1}=1$ 所以 $g^{(p-1)/2}=\pm 1$</p>
+<p>因为 $g^0\neq g^1\neq g^2\neq \cdots\neq  g^{p-2}$ 且 $g^0=1$ 所以 $g^{(p-1)/2}\neq 1$ 所以 $g^{(p-1)/2}=-1$ </p>
+<p>$(g^{(p-1)/n})^{n/2}=g^{(p-1)/2}=-1$</p>
+<blockquote>
+<ol>
+<li>$\omega_{dn}^{dk}=\omega_{n}^{k}$</li>
+</ol>
+</blockquote>
+<p>$(g^{(p-1)/(dn)})^{dk}=g^{k(p-1)/n}$</p>
+<blockquote>
+<ol>
+<li>$\omega_{n}^{i+n/2}=\omega_{n}^{n/2}\cdot\omega_{n}^{i}=-\omega_{n}^{i}$</li>
+</ol>
+</blockquote>
+<p>$(g^{(p-1)/n})^{i+n/2}=(g^{(p-1)/n})^{n/2}\cdot(g^{(p-1)/n})^{i}=-(g^{(p-1)/n})^{i}$</p>
+<p>看上去都没什么问题</p>
+<blockquote>
+<p>$\frac{1-(\omega_n^{i-j})^{n}}{1-\omega_n^{i-j}}=0$</p>
+</blockquote>
+<p>$<br>\frac{1-((g^{(p-1)/n})^{i-j})^{n}}{1-(g^{(p-1)/n})^{i-j}}=<br>\frac{1-((g^{(p-1)})^{i-j})}{1-(g^{(p-1)/n})^{i-j}}=<br>\frac{1-1^{i-j}}{1-(g^{(p-1)/n})^{i-j}}=0<br>$</p>
+<p>所以 DFT 等操作的写法和 FFT 基本等价</p>
+<hr>
+<h3 id="HDU-6067"><a href="#HDU-6067" class="headerlink" title="HDU 6067"></a>HDU 6067</h3><p>$ans=\prod_{x=1}^{k-1}\left(\sum_{i=0}^ng_{x,i}\frac{x^i}{i!}\right)[x^n]\times n!$</p>
+<p>每次更改一个多项式的一项系数</p>
+<p>对于其点值表示的影响可以顺次算出来</p>
+<p>再算一个所有多项式的对应的 $L$ 个点值表示，改了一个就先除去再修改再乘上即可</p>
+<p>因为可能有 $0$ 不能直接除要记录一下 $0$ 的个数</p>
+<p>最后求 $ans$ 不能每次都还原多项式算和可能常数太大，发现最后求的是一堆多项式的第 $n$ 项和，直接记录点值和，最后再从这个点值反推回所有的多项式的和对应系数和即可</p>
+<p><del>过了这题才发现一直以来的`NTT``的单位根都处理反了…</del></p>
+<p>一开始以为<code>NTT</code>长度只用到 $n$ 然而是每个数最多出现 $n$ 次，<code>NTT</code>长度是 $10n$ </p>
+<p><strong>记得去掉第 $0$ 位的答案，因为不存在只有 $0$ 位的数字</strong></p>
+<p><strong>这题模数小最好预处理逆元到 $MOD$ 不然复杂度多个 $\log$ 可能过不了</strong></p>
+<hr>
+<h3 id="cf286E"><a href="#cf286E" class="headerlink" title="cf286E"></a>cf286E</h3><p>每个能表示出来的数一定能被至多两个数表示出来，否则假如只能由 $a+b+c$ 表示，那么就一定不能表示 $a+b$ </p>
+<p>相当于这个集合对加法封闭</p>
+<p>直接对集合里出现的数做集合幂级数再并上一个 $0$ 即可</p>
+<p>考虑每一位：</p>
+<ul>
+<li><p>如果原来为 $0$ 现在不为 $0$ 那么这个集合不是封闭的输出<code>NO</code> </p>
+</li>
+<li><p>如果原来不为 $0$ 现在为 $0$ 不可能因为 $0$ 次项是 $1$</p>
+</li>
+<li><p>如果原来为 $0$ 现在也为 $0$ 不影响</p>
+</li>
+<li><p>如果原来不为 $0$ 现在也不为 $0$ 那么看它的值是否是 $2$ 是的话就只能是 $0+i$ 和 $i+0$ 凑出来，这个数就必选;否则一定有两个非零的和为 $i$ ，这个数可以被其他数表示出来所以不必选</p>
+</li>
+</ul>
+<hr>
+<h3 id="BZOJ4836-二元运算"><a href="#BZOJ4836-二元运算" class="headerlink" title="BZOJ4836 二元运算"></a>BZOJ4836 二元运算</h3><p>在值域上分治，每次直接算两遍左边卷右边的东西贡献到答案数组上</p>
+<p>最后每次 $O(1)$ 出答案</p>
+<hr>
+<h3 id="cf553E-Kyoya-and-Train"><a href="#cf553E-Kyoya-and-Train" class="headerlink" title="cf553E Kyoya and Train"></a>cf553E Kyoya and Train</h3><p>设 $f_{u,x}$ 表示在时间 $x$ 时点 $u$ 到 $n$ 所需要的最短路的期望</p>
+<p>则 $f_{u,x}=\min_{(u,v)\in E}c_{u,v}+\sum_{d=0}^tf_{v,x+d}\times P_{t_{u,v}=d}$</p>
+<p>令后者为 $g_{i,x}$ 即第 $i$ 条边的东西</p>
+<p>转移就成了 $f_{u,x}=\min_{(u,v)\in E}c_{u,v}+g_{v,t}$</p>
+<p>然后这个 $g$ 的转移即为</p>
+<p>$g_{u,x}=\sum_{d=0}^tf_{v,x+d}\times P_{t_{u,v}=d}$</p>
+<p>是一个卷积的形式，直接分治 fft 就搞完了</p>
+<p>然后记得当把 $[mid+1,r]$ 更新到 $[l,mid]$ 时的 $P$ 数组要开 $r-l+1$ 而不是 $r-mid+1$ 因为要把 $f_r$ 对 $g_l$ 的贡献全部算进去而不是只是 $f_r\to g_{mid}\cdots f_{mid+1}\to g_l$ 这样</p>
+<p>注意边界的最小最大值各取什么，不要想着有<code>clang++</code>查错，一个边界的小问题可能卡半个多小时</p>
+<hr>
+<h3 id="BZOJ4451-Frightful-Formula"><a href="#BZOJ4451-Frightful-Formula" class="headerlink" title="BZOJ4451 Frightful Formula"></a>BZOJ4451 Frightful Formula</h3><script type="math/tex; mode=display">
+ans=
+\sum_{i=2}^nf_{1,i}\times a^{n-i}b^{n-1}\binom{2n-i-2}{n-i}
++
+\sum_{i=2}^nf_{i,1}\times a^{n-1}b^{n-i}\binom{2n-i-2}{n-i}
++
+\sum_{i=2}^n\sum_{j=2}^nc\times \binom{2n-i-j}{n-i}a^{n-j}b^{n-i}</script><script type="math/tex; mode=display">
+\begin{aligned}
+&\sum_{i=2}^n\sum_{j=2}^nc\times \binom{2n-i-j}{n-i}a^{n-j}b^{n-i}
+\\=&
+c\sum_{i=2}^n\sum_{j=2}^n\binom{2n-i-j}{n-i}a^{n-j}b^{n-i}
+\\=&
+c\sum_{i=0}^{n-2}\sum_{j=0}^{n-2}\binom{i+j}{i}a^{j}b^{i}
+\\=&
+c\sum_{k=0}^{2n-4}\sum_{i=0}^{n-2}\binom{k}{i}a^{k-i}b^{i}
+\\=&
+c\sum_{k=0}^{2n-4}k!\sum_{i=0}^{n-2}\frac{a^{k-i}}{(k-i)!}\frac{b^i}{i!}
+\end{aligned}</script><p>这已经可以直接任意模数<code>NTT</code>做了，只是常数大</p>
+<p>由于这题的形式特殊，尝试再推一些东西</p>
+<p>令 $f_n=\sum_{i=0}^n\sum_{j=0}^n\binom{i+j}{i}a^ib^j$</p>
+<p>则上面那个东西就是 $c\times f_{n-2}$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f_{n}=&
+\sum_{i=0}^n\sum_{j=0}^n\binom{i+j}{i}a^ib^j
+\\=&
+\sum_{i=0}^{n-1}\sum_{j=0}^{n-1}\binom{i+j}{i}a^ib^j+\sum_{i=0}^n\binom{i+n}{i}a^ib^n+\sum_{j=0}^n\binom{n+j}{n}a^nb^j-\binom{2n}{n}a^nb^n
+\\=&
+f_{n-1}+\sum_{i=0}^n\binom{i+n}{i}a^ib^n+\sum_{j=0}^n\binom{n+j}{n}a^nb^j-\binom{2n}{n}a^nb^n
+\end{aligned}</script><p>边界是 $f_0=1$</p>
+<p>后两项是类似的，以 $g_a(n)=\sum_{i=0}^n\binom{i+n}{i}a^ib^n$ 为例</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g_a(n)=&\sum_{i=0}^n\binom{i+n}{i}a^ib^n
+\\=&
+\sum_{i=0}^n\left(\binom{i+n-1}{i}+\binom{i+n-1}{i-1}\right)a^ib^{n}
+\\=&
+\sum_{i=0}^n\binom{i+n-1}{i}a^ib^n+\sum_{i=0}^n\binom{i+n-1}{i-1}a^ib^{n}
+\\=&
+b\times \sum_{i=0}^{n-1}\binom{i+n-1}{i}a^ib^{n-1}+\binom{2n-1}{n}a^nb^n+\sum_{i=0}^n\binom{i+n-1}{i-1}a^ib^{n}
+\\=&
+b\times g_a(n-1)+\binom{2n-1}{n}a^nb^n+a\times \sum_{i=0}^{n-1}\binom{i+n}{i}a^ib^n 
+\\=&
+b\times g_a(n-1)+\binom{2n-1}{n}a^nb^n+a\times \left(g_a(n)-\binom{2n}{n}a^nb^n\right)
+\\=&
+b\times g_a(n-1)+\binom{2n-1}{n}a^nb^n+a\times g_a(n)-\binom{2n}{n}a^{n+1}b^n
+\end{aligned}</script><p>边界 $g_a(0)=1$</p>
+<p>得到</p>
+<p>$(1-a)g_a(n)=b\times ga_(n-1)+\binom{2n-1}{n}a^nb^n-\binom{2n}{n}a^{n+1}b^n$</p>
+<p>当 $a=1$ 时有</p>
+<script type="math/tex; mode=display">
+0=b\times g_a(n-1)+\binom{2n-1}{n}b^n-\binom{2n}{n}b^n\\
+\therefore 
+g_a(n-1)=b^{n-1}\left(\binom{2n}n-\binom{2n-1}{n}\right)=b^{n-1}\binom{2n-1}{n-1}\\
+g_a(n)=b^n\binom{2n+1}{n}</script><script type="math/tex; mode=display">
+g_a(n)=
+\begin{cases}
+\frac 1{1-a}\left(b\times g_a(n-1)+\binom{2n-1}{n}a^nb^n-\binom{2n}{n}a^{n+1}b^n\right),&a\neq 1\\
+b^n\binom{2n+1}{n},&a=1\\
+\end{cases}</script><p>同理</p>
+<script type="math/tex; mode=display">
+g_b(n)=
+\begin{cases}
+\frac 1{1-b}\left(a\times g_b(n-1)+\binom{2n-1}{n}b^na^n-\binom{2n}{n}b^{n+1}a^n\right),&b\neq 1\\
+a^n\binom{2n+1}{n},&b=1\\
+\end{cases}</script><p>然后递推的时候直接 $f_n=f_{n-1}+g_a(n)+g_b(n)-\binom{2n}{n}a^nb^n$ 非常优质</p>
+<hr>
+<h3 id="cf958F"><a href="#cf958F" class="headerlink" title="cf958F"></a>cf958F</h3><p>相当于求一堆 $1+x+x^2+x\cdots$ 的积的某一项</p>
+<p>直接分治<code>FTT</code>常数可能有点问题</p>
+<p>改成启发式合并，用个堆维护当前最小的多项式的 $size$ ，每次合并果子一样合并就行了</p>
+<hr>
+<h3 id="cf623E"><a href="#cf623E" class="headerlink" title="cf623E"></a>cf623E</h3><p>每个数至少使“前缀或”多一位的 $1$，最多 $k$ 位所以当 $n&gt;k$ 时直接<code>puts(&quot;0&quot;)</code></p>
+<p>所以现在 $n,k$ 同阶了</p>
+<p>感觉其他人搞得状态有点麻烦就自己搞了一种<del>（然后发现差不多麻烦）</del></p>
+<p>令 $f_{i,j}$ 表示前 $i$ 个数，一共在 $j$ 个位置下有 $1$ 的方案数，注意这 $j$ 个位置是在 $k$ 中的</p>
+<p>最后答案就是 $\sum_{i=1}^kf_{n,i}$ </p>
+<p>一开始想的转移是 $f_{x,i}\times \binom{k-i}{j} 2^i \to f_{x+1,i+j}$</p>
+<p>然后发现这个转移太慢了，每次似乎可以转移多个数：</p>
+<script type="math/tex; mode=display">
+f_{x,i}\times f_{y,j}\times \binom{k-i}{j}\times 2^{yi}\to f_{x+y,i+j}</script><p>那个 $2^{yi}$ 是因为对于右边的 $y$ 个数的每一个来说，左边 $i$ 位可以任选 $0/1$ 所以是 $(2^i)^y=2^{iy}$</p>
+<p>然后高兴地打了个分治，<del>然后样例就挂了</del></p>
+<p>因为这个 $f_{y,j}$ 是考虑了 $j$ 位在 $k$ 中的位置的，而我们的 $\binom{k-i}{j}$ 相当于已经给这 $j$ 位确定了位置</p>
+<p>所以 $f_{y,j}$ 还要除以 $\binom{k}{j}$ 才是不考虑在 $k$ 中顺序的方案数</p>
+<p>转移即为</p>
+<script type="math/tex; mode=display">
+f_{x,i}\times \frac{f_{y,j}}{\binom{k}{j}}\times \binom{k-i}{j}\times 2^{yi}\to f_{x+y,i+j}</script><p>然后又调了一年：</p>
+<ul>
+<li><p><code>fft</code>精度差要+0.5</p>
+</li>
+<li><p>每次 $w\times=wn$ 时精度丢失也很严重</p>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://buzhibujue.cf/2020/02/18/fft/" title="FFT&amp;NTT" target="_blank" rel="external">https://buzhibujue.cf/2020/02/18/fft/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liubei121212" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liubei121212" target="_blank"><span class="text-dark">不知不觉</span><small class="ml-1x">Oier &amp; Student</small></a></h3>
+        <div>Never Settle</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/02/22/图计数/" title="图计数"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/02/05/cf886E/" title="cf886E"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'dUYIOlsqHv5VgCljRF9mTTtv-gzGzoHsz',
+    appKey: 'HRaJc2h4HiPKBHSGP9lyU5tx',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+</body>
+</html>

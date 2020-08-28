@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang=de>
+<head><meta name="generator" content="Hexo 3.8.0">
+<script data-ad-client="ca-pub-8970649379030660" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>SCOI2019总结 | Imperceptible</title>
+  <meta name="description" content="SCOI2019 总结 Day -1整个白天就打了个$SA$的板子，感觉$SCOI$应该要考字符串，再打了个$FFT$板子题就没做什么事了，然后就颓一下午知乎。不上晚自习提前放学跑步时看到佬和几个物理组的在打球，感觉马上退役了晚自习前就也可以这么玩了。 在家里随意看了一下之前省选前定的计划发现可能还有$Polya$和$Min25$没学，感觉应该不会考也没多在意，上洛谷看了几道今日推荐结果全是数据结">
+<meta name="keywords" content="随笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SCOI2019总结">
+<meta property="og:url" content="https://buzhibujue.cf/2019/04/16/SCOI2019总结/index.html">
+<meta property="og:site_name" content="Imperceptible">
+<meta property="og:description" content="SCOI2019 总结 Day -1整个白天就打了个$SA$的板子，感觉$SCOI$应该要考字符串，再打了个$FFT$板子题就没做什么事了，然后就颓一下午知乎。不上晚自习提前放学跑步时看到佬和几个物理组的在打球，感觉马上退役了晚自习前就也可以这么玩了。 在家里随意看了一下之前省选前定的计划发现可能还有$Polya$和$Min25$没学，感觉应该不会考也没多在意，上洛谷看了几道今日推荐结果全是数据结">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-03T15:34:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SCOI2019总结">
+<meta name="twitter:description" content="SCOI2019 总结 Day -1整个白天就打了个$SA$的板子，感觉$SCOI$应该要考字符串，再打了个$FFT$板子题就没做什么事了，然后就颓一下午知乎。不上晚自习提前放学跑步时看到佬和几个物理组的在打球，感觉马上退役了晚自习前就也可以这么玩了。 在家里随意看了一下之前省选前定的计划发现可能还有$Polya$和$Min25$没学，感觉应该不会考也没多在意，上洛谷看了几道今日推荐结果全是数据结">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://buzhibujue.cf/2019/04/16/SCOI2019总结/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Imperceptible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/liubei121212" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">不知不觉</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Oier &amp; Student</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chengdu, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>Never Settle</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/BZOJ/">BZOJ</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HDU/">HDU</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LOJ/">LOJ</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SPOJ/">SPOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/UOJ/">UOJ</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/codeforces/">codeforces</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/总结/">总结</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/洛谷/">洛谷</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DP/" style="font-size: 13px;">DP</a> <a href="/tags/FFT/" style="font-size: 13.17px;">FFT</a> <a href="/tags/LCT/" style="font-size: 13px;">LCT</a> <a href="/tags/NTT/" style="font-size: 13.17px;">NTT</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/凸包/" style="font-size: 13px;">凸包</a> <a href="/tags/动态DP/" style="font-size: 13px;">动态DP</a> <a href="/tags/图论/" style="font-size: 13.17px;">图论</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/思维/" style="font-size: 13.5px;">思维</a> <a href="/tags/扩域/" style="font-size: 13px;">扩域</a> <a href="/tags/数学/" style="font-size: 13.67px;">数学</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/水题/" style="font-size: 13px;">水题</a> <a href="/tags/线性基/" style="font-size: 13px;">线性基</a> <a href="/tags/组合数学/" style="font-size: 13px;">组合数学</a> <a href="/tags/莫比乌斯反演/" style="font-size: 13px;">莫比乌斯反演</a> <a href="/tags/计数/" style="font-size: 14px;">计数</a> <a href="/tags/错排/" style="font-size: 13px;">错排</a> <a href="/tags/随笔/" style="font-size: 13.83px;">随笔</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/28/AFO/" class="title">AFO</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-28T14:21:36.000Z" itemprop="datePublished">2020-06-28</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/LOJ/">LOJ</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/26/loj2474/" class="title">LOJ2474</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-26T04:00:00.000Z" itemprop="datePublished">2020-04-26</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/22/图计数/" class="title">图计数</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-22T10:45:00.000Z" itemprop="datePublished">2020-02-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/总结/">总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/18/fft/" class="title">FFT&amp;NTT</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-18T14:08:01.000Z" itemprop="datePublished">2020-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/codeforces/">codeforces</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/05/cf886E/" class="title">cf886E</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-05T02:43:37.000Z" itemprop="datePublished">2020-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-SCOI2019总结" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SCOI2019总结
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/04/16/SCOI2019总结/" class="article-date">
+	  <time datetime="2019-04-16T15:04:58.000Z" itemprop="datePublished">2019-04-16</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/随笔/">随笔</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/04/16/SCOI2019总结/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="SCOI2019-总结"><a href="#SCOI2019-总结" class="headerlink" title="SCOI2019 总结"></a>SCOI2019 总结</h1><hr>
+<h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day -1"></a>Day -1</h3><p>整个白天就打了个$SA$的板子，感觉$SCOI$应该要考字符串，再打了个$FFT$板子题就没做什么事了，<del>然后就颓一下午知乎</del>。不上晚自习提前放学跑步时看到佬和几个物理组的在打球，<del>感觉马上退役了晚自习前就也可以这么玩了</del>。</p>
+<p>在家里随意看了一下之前省选前定的计划发现可能还有$Polya$和$Min25$没学，感觉应该不会考也没多在意，上洛谷看了几道今日推荐结果全是数据结构而且题解都看得很麻烦就都没打，大致过了几个背不到的板子就睡了。</p>
+<hr>
+<h3 id="Day0"><a href="#Day0" class="headerlink" title="Day0"></a>Day0</h3><p>上午报到基本没人，就一张表填一下就发一个学校的准考证，<del>感觉好水</del>然后看了一下下午考场就骑自行车回去开会，感觉人手一本复习的单子有点方，不过应该没什么大问题。吃了饭进考场拿到试题一看抬头</p>
+<blockquote>
+<p>一、选择题 100/100</p>
+</blockquote>
+<p>???说好的字迹清晰呢？还以为填空题，差点就去全字匹配了。结果是没有机读卡，而且连个答题卡都没有，NOIP初赛都有啊，<del>初中周练也有啊</del>，不知道怎么回事于是开始慢慢做然后旁边老哥以1分钟翻一面的速度快速AK搞得我有点慌就也加了点速度用了5分钟做完。剩余的$55$分钟感觉非常浪费人生。后面并没有提前离场因为看到有同班的也没有走，于是开始检查试卷。一共找了卷子上$5$个BUG……</p>
+<p>回去之后大致扫了下$polya$感觉考到也不会就弃了。</p>
+<hr>
+<h3 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h3><p>$7:50$时全场都在敲键盘什么鬼，测试电脑硬件需要打板吗，一开始还没反应过来，反应过来之后就也开始“测试键盘鼠标是否正常”了（CCF：“竞”赛一年）</p>
+<p>拿到题感觉$T1$可做$T2$区间重心$T3$不知道是个什么鬼</p>
+<p>看了一遍$T1$咋不是直接从$1$到$n$过去呢？后来才发现好像很不对，一定是最小的才能跳，感觉很汉诺塔就画了个$n=3$一推感觉很对，发现样例是$2$还是对的，写了一个辣鸡递归感觉${O}(qm)$随便跑，一测大样例$3,4$个点没过盲猜$long\ long$一测过了感觉很对的样子，<del>曰：此乃签到</del>，不久后突然发现可能需要高精度，但是不是很懂$30$的限制是怎么回事，打一下表发现大多$long\ long$是在$38,39$左右挂的，感叹原来是防止炸$long\ long$避免我们写高精，<del>赞曰SCOI出题人什么时候这么良心！</del>然后$T2$一看各种做法，然后想到了虚树的$35$但不知怎么换根$DP$没想到，以为复杂度$O(n^3)$就乱搞了一个链剖$O(nq\log n)$每次枚举选哪个。写着写着发现需要可持久化，那就加吧，然后又发现要区间操作，凭着可能两周前还有的印象开始写，然后经历了一些时间消失的魔法（虚拟机卡卡卡卡卡卡卡卡卡，写区间修改主席树调调调调调调调）之后就到了$12:00$，哇$8:45$写完$T1$这个$T2$写$3$个小时写不出来有毒，不过并没有慌因为平时熬夜晚上调$2,3$个小时调出来并不慌，开始写$T3$特判感觉非常顺畅然后后并没有爆搜分感觉非常不可做赶紧回来调$T2$，可能发现之前的线段树写法有锅$qry$两边都有的情况写成$qry(ql,qr,l,mid)<script type="math/tex">+</script>qry(ql,qr,mid+1,r)$然而这里应该是$qry(ql,mid,l,mid)+qry(mid+1,qr,mid+1,r)$可能查了很久的错<del>以及改半天找到的错才改完</del>等终于过了自测小样例拍了起来。还有$20$分钟想着先测一下虚拟机能否编译再写一下链或者$T1$高精度吧（这时候都没反应到高精要多$500$的常数导致$O(qm)$过不了）然后开虚拟机，然后卡死，然后测编译过了，然后点击关闭，然后卡死，然后就时间到了。<del>辣鸡电脑毁我青春</del></p>
+<p>出来之后感觉全世界都写了高精，真是菜，一下被甩$50pts$，不过抱着本来就是来打酱油的心情并没有什么不好（主要终于调出$T2$开心的一比，差点写了不知道多少$k$的代码就爆零了）。然后下午面试第一组，准备了半天的“不含个人信息及学校信息”的自我介绍没用上……直接无领导讨论，感觉有几个人是互相认识的就一直在那扯一些别的与主题不相关的东西，我提醒一遍后还是走偏了，于是感觉正常水平吧（出分后面试很菜，不知道为什么，神大以后如果还有面试分组的时候还是注意点分组比较好）然后看成绩$50+20+30$和估分一样可还行(然而考场估分$100+20+30$)当时感觉还行吧，不过其他人$T1$的$O(qm)$好像被卡了，和不写高精的我一样哈哈，睡觉的时候才反应过来好像接近垫底了，不过还是没什么感觉，主要就是来打酱油也不会去想翻盘什么的。晚上并没有看$Min25$（感觉这东西并不会考）而是随便翻翻书，看了会手机就睡了。</p>
+<hr>
+<h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><blockquote>
+<p>今年的$SCOI$依旧有计算几何$.jpg$</p>
+</blockquote>
+<p>有了昨天的经验还是早早的“测试好键盘鼠标工作正常”然后开题，$T1$一眼看过去区间叉积求绝对值最大，又看了几下感觉没什么问题开始推式子，看数据范围(昨天$T1$没写$Q$数据范围所以自信$long\ long$)没什么坑点，先写一个$O(n^3)$感觉很对，然后感觉前缀和一下就是直接的最大减最小不用考虑前后关系，用这两个拍了一会感觉很对，感觉$O(n^2)dp$的一个优化套路就是凸包啥的，草稿纸上手算一下没问题，写了一下拍过了，这么这么水，考前一周才在调一个凸包的题边界被恶心死了，结果这题一遍过样例一遍过拍???EXM???然后$O(n\log n)$<del>曰：此乃签到</del>。然后看$T2$一眼看上去感觉送了$60$分分类讨论，$T3$也是好像做的时间越长得分越多的样子。（这之间突然说$T2$要加模数，感觉SCOI出题人真😁不过有昨天调到十二点的经历我觉得还是达到$11$点写不出来就换$T3$，结果到了$10$点过电脑开始卡死了，编译一次一分钟有毒，叫了“监考人员”（还是工作人员？记不到了）于是来了一个应该也是大学生退役的$Oier$来看，并没有什么用(辣鸡电脑，确实没救)。说可能换$IDE$会快点，（我$vimer$就是从这里跳下去，也不会用你一个$dev$! 真香）然后他就走了。测了一下$dev$编译用时$49$秒整（神大电脑真😁😁）然后可能突然好了点十多秒就可以编译，然后写着写着又卡死了，$PDF$往下翻会出现大片空白，开个$vim$一分钟，又找了一遍“监考人员”来了一个很像专家的工作人员，然后注销，然后没用，然后重启，然后好了，我问能不能加时结果对曰:“这是你程序的问题，在你程序运行之前是没有问题的。懂我意思吧。”我😁😁😁。然后继续调$T2$突然过了样例，一测小数据一$WA$答案大了一点，然后有个地方写的锅有点大，改之，然后样例过不了了…发现把一个$i$，$j$打反了， 改之，样例还是过不了，我xxxxx这数据真😁。然后可能突然$12:08$了，不慌不忙写了$T3$的$20$分暴力，然后一个$W=0$感觉可以线性基，然后就感觉不可做了（这熟悉的套路）然后继续冷静调$T2$好像一对$f,g$算了多次，加了个$break$，过了，一拍很稳，然后时间不多了不敢开虚拟机怕又卡死就检查了下文件然后结束。</p>
+<p>出来在楼梯上听到$Joker$说什么$T1$两个$log$的优化吓我一跳，以为自己写了个惊天假做法，然后遇到$DXY master$写的是一样的感觉稳多了，$T2$，$T3$感觉也没什么问题该写的都写了。下午在神大闲逛，和$J{\color{red}{erome_wei}}$大神打了会球然后颓了会昨天新下回来的虚荣，老年人操作不来$5$连跪。然后就出成绩了，$100+30+40$还是和估分一样可还行，$J{\color{red}{erome_wei}}$好像挂了$100$不然就进队了，$142857\ SC$队长好稳啊，高二$4$个$A$队好稳啊，我又被初中生吊打了好菜啊，然后就该申诉的申诉，该回家的回家了。</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>感觉省选发挥还行吧，抱着打酱油的心态就会“不以物喜不以己悲”了吧。第一天比较菜也没有影响第二天翻盘（?)，两天都调了一道两三个小时的题还都调出来了可还行吧(?)，然后可能就还是不回文化课放松(?)了吧，新装备正在路上，还是要继续努力啊！</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://buzhibujue.cf/2019/04/16/SCOI2019总结/" title="SCOI2019总结" target="_blank" rel="external">https://buzhibujue.cf/2019/04/16/SCOI2019总结/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/liubei121212" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/9fbae1cb91834819ac74ee7a926ed62b?s=128" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/liubei121212" target="_blank"><span class="text-dark">不知不觉</span><small class="ml-1x">Oier &amp; Student</small></a></h3>
+        <div>Never Settle</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/06/13/2019江苏省队集训Day6T2/" title="2019江苏省队集训Day6T2"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2018/12/08/动态DP/" title="动态DP"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/liubei121212" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/3245362780" target="_blank" title="Weibo" data-toggle="tooltip" data-placement="top"><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://www.zhihu.com/people/liu-bei-86-84/activities" target="_blank" title="Zhihu" data-toggle="tooltip" data-placement="top"><i class="icon icon-zhihu"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle="tooltip" data-placement="top"><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: 'dUYIOlsqHv5VgCljRF9mTTtv-gzGzoHsz',
+    appKey: 'HRaJc2h4HiPKBHSGP9lyU5tx',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--><script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+</body>
+</html>
